@@ -36,35 +36,42 @@ const Navbar = (props) => {
     <div className="bg-blue-700 text-white flex justify-between px-10 h-20 items-center">
       <div className="flex justify-center items-center">
         {children}
-        {type === "Profile" ? (
-          ""
-        ) : (
+        {type === "Products" ? (
           <Link to="/profile">
             <img
               src={Naruto}
               className="w-10 rounded cursor-pointer border-solid border-2 border-black"
             />
           </Link>
-        )}
-        {type === "Profile" ? (
-          ""
         ) : (
+          ""
+        )}
+        {type === "Products" ? (
           <h1 className="ml-3 font-bold">{username}</h1>
+        ) : (
+          ""
         )}
       </div>
       <h1 className="ml-20 font-bold">
-        {type === "Profile" ? `Total Item: ${totalCart} | Price $${total}` : ""}
+        {type === "Products"
+          ? `Total Item: ${totalCart} | Price $${total}`
+          : ""}
       </h1>
       <div className={"flex justify-center items-center"}>
-        <Link
-          to="/buy"
-          className="text-3xl mx-5 text-slate-100 hover:text-slate-300 transition duration-300 ease-in-out">
-          <FaShoppingCart />
-        </Link>
-        {type === "Profile" ? (
-          <Button onClick={handleBack}>Back</Button>
+        {type === "Products" ? (
+          <Link
+            to="/buy"
+            className="text-3xl mx-5 text-slate-100 hover:text-slate-300 transition duration-300 ease-in-out">
+            <FaShoppingCart />
+          </Link>
         ) : (
+          ""
+        )}
+
+        {type === "Products" ? (
           <Button onClick={handleLogout}>Logout</Button>
+        ) : (
+          <Button onClick={handleBack}>Back</Button>
         )}
         {type === "Profile" ? (
           ""
