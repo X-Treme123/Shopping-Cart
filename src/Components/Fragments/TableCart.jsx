@@ -4,6 +4,7 @@ import { DarkMode } from "../../context/DarkMode";
 import { useTotalDispathPrice, useTotalPrice } from "../../context/TotalPriceContext";
 
 const TableCart = (props) => {
+    
     const { products } = props
     const cart = useSelector((state) => state.cart.data)
     const {isDarkMode} = useContext(DarkMode)

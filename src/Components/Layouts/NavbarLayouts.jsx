@@ -52,9 +52,9 @@ const Navbar = (props) => {
           ""
         )}
       </div>
-      <h1 className="ml-20 font-bold">
+      <h1 className="ml-20 font-extrabold text-2xl">
         {type === "Products"
-          ? `Total Item: ${totalCart} | Price $${total}`
+          ? `TrendMart`
           : ""}
       </h1>
       <div className={"flex justify-center items-center"}>

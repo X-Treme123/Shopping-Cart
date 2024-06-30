@@ -17,9 +17,12 @@ const ProductsPages = () => {
   return (
     <Fragment>
       <Navbar type="Products" />
+      <div>
+        <p className="text-3xl font-bold text-blue-700 p-3 mt-5 mx-10">Products</p>
+      </div>
       <div className={`flex justify-center py-5 ${isDarkMode && "bg-black"}`}>
         <div className="flex flex-wrap">
-          <div className="w-4/6 flex flex-wrap">
+          <div className="w-6/6 flex flex-wrap">
             {products.length > 0 &&
               products.map((product) => (
                 <CardProduct key={product.id}>
@@ -31,10 +34,10 @@ const ProductsPages = () => {
                 </CardProduct>
               ))}
           </div>
-          <div className="w-2/6 pl-20">
+          {/* <div className="w-2/6 pl-20">
             <h1 className="font-bold text-blue-700 text-2xl ml-5 mb-2">Cart</h1>
             <TableCart products={products} />
-          </div>
+          </div> */}
         </div>
       </div>
     </Fragment>
