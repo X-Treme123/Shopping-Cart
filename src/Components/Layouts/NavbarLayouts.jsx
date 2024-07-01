@@ -33,14 +33,14 @@ const Navbar = (props) => {
   };
 
   return (
-    <div className="bg-blue-700 text-white flex justify-between px-10 h-20 items-center">
+    <div className="bg-green-500 text-white flex justify-between px-10 h-20 items-center">
       <div className="flex justify-center items-center">
         {children}
         {type === "Products" ? (
           <Link to="/profile">
             <img
               src={Naruto}
-              className="w-10 rounded cursor-pointer border-solid border-2 border-black"
+              className="w-10 rounded cursor-pointer border-solid"
             />
           </Link>
         ) : (

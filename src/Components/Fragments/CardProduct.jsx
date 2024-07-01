@@ -6,7 +6,7 @@ import { addToCart } from "../../redux/slices/cartSlice";
 const CardProduct = (props) => {
   const { children } = props;
   return (
-    <div className="w-full max-w-xs bg-gray-700 border border-gray-200 rounded-lg shadow mx-2 flex flex-col justify-between my-2">
+    <div className="rounded-xl mx-3 flex flex-col justify-between my-2 w-full max-w-xs bg-white border-gray-200 border-2 shadow-xl hover:shadow-2xl hover:border-gray-400 transition duration-300 ease-in-out">
       {children}
     </div>
   );
@@ -19,7 +19,7 @@ const Header = (props) => {
       <img
         src={image}
         alt="products"
-        className="p-8 rounded-t-lg w-full h-60 object-cover"
+        className="p-8 rounded-t-lg w-full h-60 object-contain"
       />
     </Link>
   );
@@ -30,10 +30,10 @@ const Body = (props) => {
   return (
     <div className="px-5 pb-5 h-full">
       <a href="#">
-        <h5 className="text-white text-xl font-bold tracking-tight mb-2">
+        <h5 className="text-black text-xl font-bold tracking-tight mb-2">
           {name.substring(0, 15)}...
         </h5>
-        <p className="text-m text-white">{children.substring(0, 80)}...</p>
+        <p className="text-m text-black">{children.substring(0, 80)}...</p>
       </a>
     </div>
   );
@@ -44,7 +44,7 @@ const Footer = (props) => {
   const { price, id } = props;
   return (
     <div className="flex items-center justify-around pb-5">
-      <span className="text-white font-bold text-xl">
+      <span className="text-black font-bold text-xl">
         ${" "}
         {price.toLocaleString("en-US", { styles: "currency", currency: "USD" })}
       </span>
