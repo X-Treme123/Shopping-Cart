@@ -21,7 +21,7 @@ const ProductsPages = () => {
       <div className={`${isDarkMode && "bg-black text-white"}`}>
         <Banner />
         {/* <div className="flex justify-around">
-          <p className="text-3xl font-bold py-3">Product Trend<span className="text-red-600">Mart</span></p>
+          <p className="text-3xl font-bold">Product Trend<span className="text-red-600">Mart</span></p>
         </div> */}
         <div className={`flex justify-center`}>
           <div className="flex flex-wrap">

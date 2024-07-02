@@ -18,8 +18,8 @@ const Banner = () => {
     setCurrentIndex(index);
   };
   return (
-    <div className={`flex justify-center items-center mx-20`}>
-      <div className="relative w-[65%] h-auto flex overflow-hidden shadow-xl rounded-2x rounded-xl">
+    <div className={`flex justify-center items-center px-10`}>
+      <div className="relative w-[60%] h-auto flex overflow-hidden shadow-xl rounded-2x rounded-xl">
         <div
           className="flex transition-transform duration-500"
           style={{ transform: `translateX(${currentIndex * -100}%)` }}>
@@ -43,7 +43,7 @@ const Banner = () => {
           ))}
         </div>
       </div>
-      <div className="w-[30%] h-auto flex flex-col justify-center items-center shadow-sm p-2 my-5">
+      <div className="w-[30%] h-auto flex flex-col shadow-sm p-8">
         <img src="/images/banner.png" alt="banner" />
         <img src="/images/banner.png" alt="banner" />
       </div>

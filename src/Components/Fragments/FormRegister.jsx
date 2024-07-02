@@ -3,7 +3,7 @@ import Button from "../Elements/Button/Button"
 
 const FormRegister = () => {
     return(
-        <form action="">
+        <form className="text-white">
             <InputForm
             type="text" 
             placeholder="enter your name" 
@@ -28,7 +28,7 @@ const FormRegister = () => {
             label="Confirm Password" 
             name="confirmPassword"
             />
-            <Button classname="bg-blue-600 w-full">Register</Button>
+            <Button classname="bg-green-500 w-full">Register</Button>
         </form>
     )
 }

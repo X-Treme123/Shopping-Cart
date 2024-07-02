@@ -1,6 +1,6 @@
 import Navbar from "../Components/Layouts/NavbarLayouts";
 import useLogin from "../hooks/useLogin"
-import Naruto from "/images/naruto.jpeg"
+import Naruto from "/images/profile.png"
 import { Link } from "react-router-dom";
 import { FaAddressCard } from "react-icons/fa";
 import { useTotalPrice } from "../context/TotalPriceContext";

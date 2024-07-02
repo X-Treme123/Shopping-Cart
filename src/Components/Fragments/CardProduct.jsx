@@ -2,12 +2,17 @@ import { Link } from "react-router-dom";
 import Button from "../Elements/Button/Button";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/slices/cartSlice";
+import { DarkMode } from "../../context/DarkMode";
+import { useContext } from "react";
 
 const CardProduct = (props) => {
+  const { isDarkMode } = useContext(DarkMode);
   const { children } = props;
   return (
-    <div className="rounded-xl mx-3 flex flex-col justify-between my-2 w-full max-w-xs bg-white border-gray-200 border-2 shadow-xl hover:shadow-2xl hover:border-gray-400 transition duration-300 ease-in-out">
-      {children}
+    <div
+      className="rounded-xl mx-5 flex flex-col w-auto h-auto justify-between my-5 max-w-xs border-gray-200 shadow-xlhover:shadow-2xl bg-white border-2 hover:border-gray-400 transition duration-300 ease-in-out"
+      >
+        {children}
     </div>
   );
 };
@@ -19,7 +24,7 @@ const Header = (props) => {
       <img
         src={image}
         alt="products"
-        className="p-8 rounded-t-lg w-full h-60 object-contain"
+        className="p-3 rounded-t-lg w-full h-60 object-contain"
       />
     </Link>
   );

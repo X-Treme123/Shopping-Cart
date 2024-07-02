@@ -4,7 +4,7 @@ import Button from "../Elements/Button/Button";
 import { useSelector } from "react-redux";
 import { DarkMode } from "../../context/DarkMode";
 import { useTotalPrice } from "../../context/TotalPriceContext";
-import Naruto from "/images/naruto.jpeg";
+import Picture from "/images/profile.png";
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 
@@ -39,8 +39,8 @@ const Navbar = (props) => {
         {type === "Products" ? (
           <Link to="/profile">
             <img
-              src={Naruto}
-              className="w-10 rounded cursor-pointer border-solid"
+              src={Picture}
+              className="w-9 rounded-full cursor-pointer"
             />
           </Link>
         ) : (
