@@ -8,6 +8,7 @@ import {
 } from "../context/TotalPriceContext";
 import { DarkMode } from "../context/DarkMode";
 import { getProducts } from "../Services/products.service";
+import useLogin from "../hooks/useLogin";
 
 export const BuyPage = () => {
   const cart = useSelector((state) => state.cart.data);
@@ -15,6 +16,7 @@ export const BuyPage = () => {
   const { total } = useTotalPrice();
   const [products, setProducts] = useState([]);
   const [totalCart, setTotalCart] = useState();
+  const username = useLogin()
 
   useEffect(() => {
     getProducts((data) => {

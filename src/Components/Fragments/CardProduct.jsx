@@ -2,17 +2,17 @@ import { Link } from "react-router-dom";
 import Button from "../Elements/Button/Button";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/slices/cartSlice";
-import { DarkMode } from "../../context/DarkMode";
-import { useContext } from "react";
+import Modal from "react-modal";
+import { useState } from "react";
+import "/src/style.css";
+
+Modal.setAppElement('#root');
 
 const CardProduct = (props) => {
-  const { isDarkMode } = useContext(DarkMode);
   const { children } = props;
   return (
-    <div
-      className="rounded-xl mx-5 flex flex-col w-auto h-auto justify-between my-5 max-w-xs border-gray-200 shadow-xlhover:shadow-2xl bg-white border-2 hover:border-gray-400 transition duration-300 ease-in-out"
-      >
-        {children}
+    <div className="rounded-xl mx-5 flex flex-col w-auto h-auto justify-between my-5 max-w-xs border-gray-200 shadow-xlhover:shadow-2xl bg-white border-2 hover:border-gray-400 transition duration-300 ease-in-out">
+      {children}
     </div>
   );
 };
@@ -45,19 +45,42 @@ const Body = (props) => {
 };
 
 const Footer = (props) => {
+  const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
   const { price, id } = props;
+  const handleAddToCart = () => {
+    dispatch(addToCart({ id, qty: 1 }));
+    setShowModal(true);
+  };
+
   return (
     <div className="flex items-center justify-around pb-5">
       <span className="text-black font-bold text-xl">
         ${" "}
         {price.toLocaleString("en-US", { styles: "currency", currency: "USD" })}
       </span>
-      <Button
-        className="bg-blue-600"
-        onClick={() => dispatch(addToCart({ id, qty: 1 }))}>
+      <Button className="bg-blue-600" onClick={handleAddToCart}>
         Add To Cart
       </Button>
+      <Modal
+        isOpen={showModal}
+        onRequestClose={() => setShowModal(false)}
+        contentLabel="Success Pop-up"
+        className="modal"
+        overlayClassName="modal-overlay">
+        <div className="modal-content">
+          <img src="/public/images/verified.gif" 
+          alt="image pop-up" 
+          className="w-20 h-20 ml-32 mb-2"/>
+          <h2 className="text-2xl font-bold mb-3">Item Added to Cart</h2>
+          <p>The item has been added to your cart.</p>
+          <button
+            className="mt-5 bg-blue-600 text-white px-3 py-2 rounded"
+            onClick={() => setShowModal(false)}>
+            Close
+          </button>
+        </div>
+      </Modal>
     </div>
   );
 };

@@ -11,10 +11,10 @@ const AuthLayouts = (props) => {
   return (
     <div
       className="custom-background flex gap-4 justify-center min-h-screen items-center">
-      <div className="custom-border p-10 bg-slate-100 flex items-center rounded-xl border-2 border-slate-300">
+      <div className="custom-border p-10 bg-slate-100 flex items-center rounded-xl border-2 border-slate-400">
         <div className="flex flex-col justify-center items-center">
           <img src="/images/shopping.png" alt="shopping" width={300} />
-          <p className="text-xl font-bold pr-10 text-white">Enjoy <span className="text-green-400">Shopping</span></p>
+          <p className="absolute bottom-16 bg-sky-400 rounded-xl mr-10 p-3 text-xl font-bold  text-white">Enjoy Shopping</p>
         </div>
         <div className="w-full max-w-xs">
           {/* <button

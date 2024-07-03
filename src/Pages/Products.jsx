@@ -4,8 +4,12 @@ import { getProducts } from "../Services/products.service";
 import Navbar from "../Components/Layouts/NavbarLayouts";
 import { DarkMode } from "../context/DarkMode";
 import Banner from "../Components/Fragments/Banner";
+import { useSelector } from "react-redux";
+import { useTotalDispathPrice } from "../context/TotalPriceContext";
 
 const ProductsPages = () => {
+  const cart = useSelector((state) => state.cart.data);
+  const dispatch = useTotalDispathPrice();
   const { isDarkMode } = useContext(DarkMode);
   const [products, setProducts] = useState([]);
 
@@ -14,6 +18,22 @@ const ProductsPages = () => {
       setProducts(data);
     });
   }, []);
+
+  useEffect(() => {
+    if (products.length > 0 && cart.length > 0) {
+      const sum = cart.reduce((acc, item) => {
+        const product = products.find((product) => product.id === item.id);
+        return acc + product.price * item.qty;
+      }, 0);
+      dispatch({
+        type: "UPDATE",
+        payload: {
+          total: sum,
+        },
+      });
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+  }, [cart, products]);
 
   return (
     <Fragment>

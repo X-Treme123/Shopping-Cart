@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getDetailProduct } from "../Services/products.service";
 import Button from "../Components/Elements/Button/Button";
+import useLogin from "../hooks/useLogin";
 
 export const DetailProductPage = () => {
   const { id } = useParams();
   const [product, setProduct] = useState({});
+  const username = useLogin()
 
   useEffect(() => {
     getDetailProduct(id, (data) => {

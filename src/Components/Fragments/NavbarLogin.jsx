@@ -14,7 +14,7 @@ const NavbarLogin =  () => {
 
     return(
         <div className="h-screen">
-            <navbar className="bg-green-500 text-white flex justify-between px-10 h-20 items-center">
+            <navbar className="bg-orange-500 text-white flex justify-between px-10 h-20 items-center">
                 <h1 className="text-2xl font-bold">TrendMart</h1>
                 <Button onClick={handleLogin}>Login</Button>
             </navbar>
