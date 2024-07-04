@@ -11,7 +11,7 @@ Modal.setAppElement('#root');
 const CardProduct = (props) => {
   const { children } = props;
   return (
-    <div className="rounded-xl mx-5 flex flex-col w-auto h-auto justify-between my-5 max-w-xs border-gray-200 shadow-xlhover:shadow-2xl bg-white border-2 hover:border-gray-400 transition duration-300 ease-in-out">
+    <div className="rounded-xl mx-5 flex flex-col w-auto h-auto justify-between my-5 max-w-xs border-gray-200 shadow-xl hover:shadow-2xl bg-white border-2 hover:border-gray-400 transition duration-300 ease-in-out">
       {children}
     </div>
   );
@@ -67,15 +67,15 @@ const Footer = (props) => {
         onRequestClose={() => setShowModal(false)}
         contentLabel="Success Pop-up"
         className="modal"
-        overlayClassName="modal-overlay">
-        <div className="modal-content">
+        overlayClassName="modal-overlay border-2 border-slate-500 shadow-3xl">
+        <div className="flex flex-col items-center">
           <img src="/public/images/verified.gif" 
           alt="image pop-up" 
-          className="w-20 h-20 ml-32 mb-2"/>
+          className="w-40 h-auto"/>
           <h2 className="text-2xl font-bold mb-3">Item Added to Cart</h2>
           <p>The item has been added to your cart.</p>
           <button
-            className="mt-5 bg-blue-600 text-white px-3 py-2 rounded"
+            className="mt-5 bg-blue-600 text-white font-bold px-20 py-2 rounded hover:bg-blue-500 transition duration-100 ease-in-out"
             onClick={() => setShowModal(false)}>
             Close
           </button>

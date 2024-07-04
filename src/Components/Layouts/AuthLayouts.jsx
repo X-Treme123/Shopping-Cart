@@ -11,10 +11,10 @@ const AuthLayouts = (props) => {
   return (
     <div
       className="custom-background flex gap-4 justify-center min-h-screen items-center">
-      <div className="custom-border p-10 bg-slate-100 flex items-center rounded-xl border-2 border-slate-400">
+      <div className="custom-border p-10 flex items-center rounded-xl border-2 border-slate-400">
         <div className="flex flex-col justify-center items-center">
-          <img src="/images/shopping.png" alt="shopping" width={300} />
-          <p className="absolute bottom-16 bg-sky-400 rounded-xl mr-10 p-3 text-xl font-bold  text-white">Enjoy Shopping</p>
+          <img src="/images/shopping.png" alt="shopping" width={400} />
+          <p className="absolute bottom-16 bg-green-400 rounded-xl mr-20 p-3 text-xl font-bold text-white">Enjoy Shopping</p>
         </div>
         <div className="w-full max-w-xs">
           {/* <button
@@ -33,12 +33,12 @@ const AuthLayouts = (props) => {
               : "Already have an account ? "}
 
             {type === "Login" && (
-              <Link to="/register" className="font-bold text-green-400">
+              <Link to="/register" className="font-bold text-green-400 hover:text-green-300 transition duration-200 ease-in-out">
                 Register
               </Link>
             )}
             {type === "Register" && (
-              <Link to="/login" className="font-bold text-green-400">
+              <Link to="/login" className="font-bold text-green-400 hover:text-green-300 transition duration-200 ease-in-out">
                 Login
               </Link>
             )}

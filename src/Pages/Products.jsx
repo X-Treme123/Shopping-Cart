@@ -6,6 +6,7 @@ import { DarkMode } from "../context/DarkMode";
 import Banner from "../Components/Fragments/Banner";
 import { useSelector } from "react-redux";
 import { useTotalDispathPrice } from "../context/TotalPriceContext";
+import { Footer } from "../Components/Layouts/Footer";
 
 const ProductsPages = () => {
   const cart = useSelector((state) => state.cart.data);
@@ -37,15 +38,15 @@ const ProductsPages = () => {
 
   return (
     <Fragment>
+      {/* Navbar */}
       <Navbar type="Products" />
       <div className={`${isDarkMode && "bg-black text-white"}`}>
+        {/* Banner */}
         <Banner />
-        {/* <div className="flex justify-around">
-          <p className="text-3xl font-bold">Product Trend<span className="text-red-600">Mart</span></p>
-        </div> */}
         <div className={`flex justify-center`}>
           <div className="flex flex-wrap">
             <div className="w-full h-auto flex flex-wrap justify-center">
+              {/* products */}
               {products.length > 0 &&
                 products.map((product) => (
                   <CardProduct key={product.id}>
@@ -57,12 +58,10 @@ const ProductsPages = () => {
                   </CardProduct>
                 ))}
             </div>
-            {/* <div className="w-2/6 pl-20">
-            <h1 className="font-bold text-blue-700 text-2xl ml-5 mb-2">Cart</h1>
-            <TableCart products={products} />
-          </div> */}
           </div>
         </div>
+        {/* Footer */}
+        <Footer />
       </div>
     </Fragment>
   );
