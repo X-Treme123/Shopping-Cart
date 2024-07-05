@@ -7,26 +7,22 @@ import { FaTelegram } from "react-icons/fa";
 
 export const AboutMe = () => {
   return (
-    <div>
+    <div className="text-base">
       {/* Instagram */}
       <About to="https://www.instagram.com/accounts/login/">
-        <FaInstagram /> Instagram
+        <p className="flex items-center"><FaInstagram /> <span className="px-2">Instagram</span></p>
       </About>
-      {/* facebook */}
-      <About to="https://id-id.facebook.com/login/device-based/regular/login/?login_attempt=1">
-        <FaSquareFacebook /> Facebook
+      <About to="https://www.instagram.com/accounts/login/">
+        <p className="flex items-center"><FaSquareFacebook /> <span className="px-2">Facebook</span></p>
       </About>
-      {/* Twitter */}
-      <About to="https://twitter.com/">
-        <FaTwitterSquare /> Twitter
+      <About to="https://www.instagram.com/accounts/login/">
+        <p className="flex items-center"><FaTwitterSquare /> <span className="px-2">Twitter</span></p>
       </About>
-      {/* WhatsApp */}
-      <About to="https://web.whatsapp.com/">
-        <FaWhatsapp /> WhatsApp
+      <About to="https://www.instagram.com/accounts/login/">
+        <p className="flex items-center"><FaWhatsapp /> <span className="px-2">Whatsapp</span></p>
       </About>
-      {/* Telegram */}
-      <About to="https://web.telegram.org/a/">
-        <FaTelegram /> Telegram
+      <About to="https://www.instagram.com/accounts/login/">
+        <p className="flex items-center"><FaTelegram /> <span className="px-2">Telegram</span></p>
       </About>
     </div>
   );

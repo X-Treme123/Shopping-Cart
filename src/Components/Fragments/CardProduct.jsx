@@ -11,7 +11,7 @@ Modal.setAppElement('#root');
 const CardProduct = (props) => {
   const { children } = props;
   return (
-    <div className="rounded-xl mx-5 flex flex-col w-auto h-auto justify-between my-5 max-w-xs border-gray-200 shadow-xl hover:shadow-2xl bg-white border-2 hover:border-gray-400 transition duration-300 ease-in-out">
+    <div className="rounded-xl m-10 flex flex-col w-auto h-auto max-w-xs border-gray-200 shadow-xl hover:shadow-2xl bg-white border-2 hover:border-gray-400 transition duration-300 ease-in-out">
       {children}
     </div>
   );

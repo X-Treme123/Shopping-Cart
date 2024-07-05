@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 const Banner = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const images = ["/images/banner3.jpg", "/images/banner2.jpg"];
+  const images = ["/images/banner3.jpg", "/images/banner2.jpg", "/images/banner3.jpg"];
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -18,8 +18,8 @@ const Banner = () => {
     setCurrentIndex(index);
   };
   return (
-    <div className={`flex justify-center items-center px-10`}>
-      <div className="relative w-[60%] h-auto flex overflow-hidden shadow-xl rounded-2x rounded-xl">
+    <div className={`flex justify-center items-center pt-5 pb-10`}>
+      <div className="relative w-[65%] h-auto flex overflow-hidden shadow-xl rounded-xl mr-5">
         <div
           className="flex transition-transform duration-500"
           style={{ transform: `translateX(${currentIndex * -100}%)` }}>
@@ -43,9 +43,9 @@ const Banner = () => {
           ))}
         </div>
       </div>
-      <div className="w-[30%] h-auto flex flex-col shadow-sm p-8">
-        <img src="/images/banner.png" alt="banner" />
-        <img src="/images/banner.png" alt="banner" />
+      <div className="w-[27%] h-auto flex flex-col ml-5 rounded-xl gap-16">
+        <img src="/images/banner5.png" alt="banner" className="shadow-xl rounded-xl"/>
+        <img src="/images/banner5.png" alt="banner" className="shadow-xl rounded-xl"/>
       </div>
     </div>
   );

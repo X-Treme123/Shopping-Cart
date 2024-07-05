@@ -58,8 +58,8 @@ export const BuyPage = () => {
   }, [cart, products]);
 
   return (
-    <div className="h-screen w-full flex items-center justify-center">
-      <div className="h-4/5 w-4/5 flex justify-center">
+    <div className="h-screen w-full flex items-center justify-center bg-slate-900">
+      <div className="h-4/5 w-4/5 flex justify-center border-4 rounded-xl">
         <div className="w-4/5 flex flex-col items-start gap-5 shadow-2xl shadow-gray-400 border-r-2 border-slate-400 bg-white">
           <div className="flex justify-between mx-4 border-b border-gray-400 flex-col gap-3">
             <h1 className="text-xl font-bold py-5 text-blue-700">

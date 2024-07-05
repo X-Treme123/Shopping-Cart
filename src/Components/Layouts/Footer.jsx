@@ -7,46 +7,45 @@ export const Footer = () => {
       <div className="w-full flex text-justify px-16 py-24 text-sm">
         {/* Tentang Kami */}
         <div className="w-1/5 ml-8">
-          <p className="font-semibold mb-2">Tentang Kami</p>
+          <p className="font-bold mb-2 text-xl">About Me</p>
           <AboutMe />
         </div>
         <div className="w-4/5 mx-6">
-          <p className="font-semibold mb-2">
-            Nusantara Shop - Membawa Eksplorasi Budaya ke Dunia Digital!
+          <p className="font-bold mb-2 text-xl">
+            TrendMart - Enjoy Shopping Enjoy Your Life
           </p>
-          <p>
-            Nusantara Shop membawa Anda ke dunia belanja online dengan sentuhan
-            lokal yang kaya dan pengalaman tanpa batas. Sebagai platform
-            e-commerce unggulan di wilayah Nusantara, kami mengundang Anda untuk
-            menjelajahi kekayaan budaya melalui koleksi produk berkualitas
-            tinggi yang menampilkan keindahan dan keragaman warisan Nusantara.
+          <p className="text-base">
+            TrendMart takes you to the world of online shopping with a local
+            touch rich and limitless experience. As an e-commerce platform
+            superior in the archipelago region, we invite you to exploring
+            cultural riches through a collection of quality products high which
+            displays the beauty and diversity of the archipelago's heritage.
           </p>
           <br />
-          <p className="font-semibold pb-2">Mengapa Memilih Nusantara Shop?</p>
-          <ol className="list-decimal">
+          <p className="font-bold pb-2 text-base">Why Choose TrendMart?</p>
+          <ol className="list-decimal text-base">
             <li>
-              Eksplorasi Budaya Tanpa Batas: Nusantara Shop adalah pintu gerbang
-              virtual ke keindahan dan kekayaan budaya Nusantara. Setiap produk
-              yang kami tawarkan adalah perpaduan antara tradisi dan modernitas,
-              memberikan pengalaman belanja yang unik dan bermakna.
+              289 / 5.000 Boundless Cultural Exploration TrendMart is the
+              gateway virtual experience of the beauty and richness of
+              Indonesian culture. Every product what we offer is a combination
+              of tradition and modernity, providing a unique and meaningful
+              shopping experience.
             </li>
             <li>
-              Belanja dengan Hati yang Tenang: Kami memahami pentingnya
-              kepercayaan dalam belanja online. Nusantara Shop memberikan
-              keamanan transaksi sebagai prioritas utama, memastikan setiap
-              pembelian Anda dilakukan dengan hati yang tenang.
+              Shop with Peace of Mind: We understand the importance Trust in
+              online shopping TrendMart provides security transactions as a top
+              priority, ensuring every purchase You are done with a calm heart.
             </li>
             <li>
-              Komunitas Penuh Inspirasi: Bergabunglah dengan komunitas Nusantara
-              Shop dan jadilah bagian dari perjalanan kami dalam melestarikan
-              dan mempromosikan kekayaan budaya. Dengan mendaftarkan produk Anda
-              atau menjelajahi penawaran menarik, Anda berkontribusi pada
-              pertumbuhan komunitas yang penuh inspirasi.
+              Inspirational Community: Join the Nusantara community Shop and be
+              part of our journey in preserving and promote cultural richness.
+              By registering your product or explore exciting offers, you
+              contribute to inspiring community growth.
             </li>
           </ol>
         </div>
       </div>
-      <div className=" py-4 px-8 flex items-center justify-between text-sm">
+      <div className="pb-5 px-10 flex items-center justify-between text-sm font-semibold">
         <p className="flex items-center">
           Made With <TbClover /> | Copyright &copy; 2024 Faizal Putra .
         </p>
