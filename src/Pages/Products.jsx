@@ -40,7 +40,7 @@ const ProductsPages = () => {
     <Fragment>
       {/* Navbar */}
       <Navbar type="Products" />
-      <div className={`${isDarkMode && "bg-black text-white"}`}>
+      <div className={`${isDarkMode && "bg-slate-900 text-white"}`}>
         {/* Banner */}
         <Banner />
         <div className={`flex justify-center`}>

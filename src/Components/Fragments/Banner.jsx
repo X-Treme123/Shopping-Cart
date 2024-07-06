@@ -18,7 +18,7 @@ const Banner = () => {
     setCurrentIndex(index);
   };
   return (
-    <div className={`flex justify-center items-center pt-5 pb-10`}>
+    <div className={`flex justify-center items-center pt-5`}>
       <div className="relative w-[65%] h-auto flex overflow-hidden shadow-xl rounded-xl mr-5">
         <div
           className="flex transition-transform duration-500"

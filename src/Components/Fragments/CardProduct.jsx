@@ -3,15 +3,17 @@ import Button from "../Elements/Button/Button";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/slices/cartSlice";
 import Modal from "react-modal";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "/src/style.css";
+import { DarkMode } from "../../context/DarkMode";
 
 Modal.setAppElement('#root');
 
 const CardProduct = (props) => {
+  const { isDarkMode } = useContext(DarkMode);
   const { children } = props;
   return (
-    <div className="rounded-xl m-10 flex flex-col w-auto h-auto max-w-xs border-gray-200 shadow-xl hover:shadow-2xl bg-white border-2 hover:border-gray-400 transition duration-300 ease-in-out">
+    <div className={`flex flex-col w-auto h-auto justify-center rounded-xl m-10 max-w-xs border-gray-200 shadow-xl hover:shadow-2xl border-2 hover:border-gray-300 transition duration-300 ease-in-out ${isDarkMode ? "bg-slate-800 border-slate-700 hover:border-slate-600" : "bg-white"}`}>
       {children}
     </div>
   );
@@ -24,7 +26,7 @@ const Header = (props) => {
       <img
         src={image}
         alt="products"
-        className="p-3 rounded-t-lg w-full h-60 object-contain"
+        className="p-5 rounded-t-lg w-full h-60 object-cover hover:scale-105 transition duration-200 ease-in-out"
       />
     </Link>
   );
@@ -35,10 +37,10 @@ const Body = (props) => {
   return (
     <div className="px-5 pb-5 h-full">
       <a href="#">
-        <h5 className="text-black text-xl font-bold tracking-tight mb-2">
+        <h5 className={`text-xl font-bold tracking-tight mb-2`}>
           {name.substring(0, 15)}...
         </h5>
-        <p className="text-m text-black">{children.substring(0, 80)}...</p>
+        <p className="text-m">{children.substring(0, 80)}...</p>
       </a>
     </div>
   );
@@ -55,7 +57,7 @@ const Footer = (props) => {
 
   return (
     <div className="flex items-center justify-around pb-5">
-      <span className="text-black font-bold text-xl">
+      <span className="font-bold text-xl">
         ${" "}
         {price.toLocaleString("en-US", { styles: "currency", currency: "USD" })}
       </span>
@@ -67,7 +69,7 @@ const Footer = (props) => {
         onRequestClose={() => setShowModal(false)}
         contentLabel="Success Pop-up"
         className="modal"
-        overlayClassName="modal-overlay border-2 border-slate-500 shadow-3xl">
+        overlayClassName="modal-overlay border-4 border-slate-500 shadow-3xl">
         <div className="flex flex-col items-center">
           <img src="/public/images/verified.gif" 
           alt="image pop-up" 

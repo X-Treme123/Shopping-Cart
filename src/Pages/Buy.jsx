@@ -18,6 +18,7 @@ export const BuyPage = () => {
   const [totalCart, setTotalCart] = useState();
   const username = useLogin()
 
+
   useEffect(() => {
     getProducts((data) => {
       setProducts(data);
@@ -28,7 +29,7 @@ export const BuyPage = () => {
     const updatedProducts = products.filter((_, i) => i !== item);
 
     // Menyimpan data yang sudah diupdate ke local storage
-    localStorage.removeItem("cart", JSON.stringify(updatedProducts));
+    localStorage.setItem("cart", JSON.stringify(updatedProducts));
 
     // Mengupdate state dengan data yang baru
     setProducts(updatedProducts);
@@ -68,7 +69,7 @@ export const BuyPage = () => {
             <h2 className="font-semibold">{totalCart} Items</h2>
           </div>
           <div className="h-[63vh] text-center overflow-y-auto">
-            <table className="w-full border-collapse items-left font-semibold">
+            <table className="w-full border-collapse items-left font-semibold scroll-snap-type: y var(--tw-scroll-snap-strictness) ">
               <thead>
                 <tr className="text-left">
                   <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
