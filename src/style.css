@@ -1,3 +1,25 @@
+:root {
+  font-size: 12px; /* Default font size */
+}
+
+body {
+  font-size: 1rem; /* 16px */
+}
+
+.text-small {
+  font-size: 0.875rem; /* 14px */
+}
+
+.text-medium {
+  font-size: 1rem; /* 16px */
+}
+
+.text-large {
+  font-size: 1.25rem; /* 20px */
+}
+
+
+
 .popup {
   display: none;
   position: fixed; 
@@ -51,3 +73,5 @@
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
 }
+
+
