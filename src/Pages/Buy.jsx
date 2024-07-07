@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { MdArrowBackIos } from "react-icons/md";
 import {
@@ -20,7 +20,7 @@ export const BuyPage = () => {
   const { total } = useTotalPrice();
   const [products, setProducts] = useState([]);
   const [totalCart, setTotalCart] = useState();
-  const [delivery, setDelivery] = useState(0)
+  const [delivery, setDelivery] = useState(0);
   const [selectDelivery, setSelectDelivery] = useState();
   const username = useLogin();
 
@@ -33,9 +33,9 @@ export const BuyPage = () => {
   const handleDeliveryChange = (e) => {
     const selectOption = e.target.value;
     setSelectDelivery(selectOption);
-// Update Delivery After Summary
-    updateDelivery(selectOption)
-  }
+    // Update Delivery After Summary
+    updateDelivery(selectOption);
+  };
 
   const updateDelivery = (DeliveryOption) => {
     let cost = 0;
@@ -60,9 +60,9 @@ export const BuyPage = () => {
         cost = 0;
     }
     setDelivery(cost);
-  }
+  };
 
-  const totalCost = total + delivery
+  const totalCost = total + delivery;
 
   const handleRemoveProduct = (item) => {
     const updatedProducts = products.filter((_, i) => i !== item);
@@ -107,8 +107,8 @@ export const BuyPage = () => {
             </h1>
             <h2 className="font-semibold">{totalCart} Items</h2>
           </div>
-          <div className="h-[63vh] text-center overflow-y-auto">
-            <table className="w-full border-collapse items-left font-semibold scroll-snap-type: y var(--tw-scroll-snap-strictness) ">
+          <div className="h-[63vh] w-auto text-center overflow-y-auto">
+            <table className="w-full border-collapse bg-slate-100 border-b items-left font-semibold scroll-snap-type: y var(--tw-scroll-snap-strictness) ">
               <thead>
                 <tr className="text-left">
                   <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -137,13 +137,13 @@ export const BuyPage = () => {
                     return (
                       <tr
                         key={item.id}
-                        className={item % 2 === 0 ? "bg-gray-50" : ""}>
+                        className={`border-y border-slate-300`}>
                         <td className="px-5 py-3">
                           <img
                             src={product.image}
                             alt={product.title}
                             width="50"
-                            className="p-1 w-40 h-40 rounded-t-lg object-cover"
+                            className="p-1 w-40 h-40 rounded-t-lg object-contain border-2 "
                           />
                         </td>
                         <td className="px-10 py-3">
@@ -191,17 +191,12 @@ export const BuyPage = () => {
             <p className="text-xl font-bold text-blue-700 py-5">
               Order Summary
             </p>
-            <p className="text-sm font-medium">
-              {total.toLocaleString("en-US", {
-                style: "currency",
-                currency: "USD",
-              })}
-            </p>
+            <p className="text-lg font-bold">Transaction</p>
           </div>
           <div className="w-11/12 ml-4 mt-2">
             <label
               htmlFor="shipping"
-              className="block my-2 text-base font-bold">
+              className="block my-2 text-base font-bold text-gray-500">
               Delivery Option
             </label>
             <select
@@ -209,7 +204,7 @@ export const BuyPage = () => {
               onChange={handleDeliveryChange}
               id="shipping"
               className="text-gray-500 focus:text-black outline-none w-full text-base rounded-lg block p-2 bg-slate-300">
-              <option value="default" disabled selected>
+              <option value="default" disabled hidden>
                 Choose Delivery
               </option>
               <option value="free">Free Delivery - $0</option>
@@ -220,7 +215,7 @@ export const BuyPage = () => {
             </select>
           </div>
           <div className="w-11/12 ml-4 mt-2">
-            <p className="text-base font-bold">Payment</p>
+            <p className="text-base font-bold text-gray-500">Payment</p>
             <ul className="w-full">
               {/* BCA */}
               <li className="py-2">
@@ -234,7 +229,7 @@ export const BuyPage = () => {
                 />
                 <label
                   htmlFor="bca"
-                  className="inline-flex items-center justify-between w-full py-1 px-2 text-gray-500 bg-slate-300 border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-slate-300 ">
+                  className="flex items-center justify-between w-full py-1 px-2 text-gray-500 bg-slate-300 border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-slate-300 ">
                   <div className="flex">
                     <Bca></Bca>
                     <h4 className="flex items-center ml-2 text-base font-semibold">
@@ -255,7 +250,7 @@ export const BuyPage = () => {
                 />
                 <label
                   htmlFor="bni"
-                  className="inline-flex items-center justify-between w-full py-1 px-2 text-gray-500 bg-slate-300 border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-slate-300 ">
+                  className="flex items-center justify-between w-full py-1 px-2 text-gray-500 bg-slate-300 border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-slate-300 ">
                   <div className="flex">
                     <BNI></BNI>
                     <h4 className="flex items-center ml-2 text-base font-semibold">
@@ -275,7 +270,7 @@ export const BuyPage = () => {
                 />
                 <label
                   htmlFor="bri"
-                  className="inline-flex items-center justify-between w-full py-1 px-2 text-gray-500 bg-slate-300 border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-slate-300 ">
+                  className="flex items-center justify-between w-full py-1 px-2 text-gray-500 bg-slate-300 border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-slate-300 ">
                   <div className="flex">
                     <BRI></BRI>
                     <h4 className="flex items-center ml-2 text-base font-semibold">
@@ -295,7 +290,7 @@ export const BuyPage = () => {
                 />
                 <label
                   htmlFor="mandiri"
-                  className="inline-flex items-center justify-between w-full py-1 px-2 text-gray-500 bg-slate-300 border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-slate-300 ">
+                  className="flex items-center justify-between w-full py-1 px-2 text-gray-500 bg-slate-300 border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-slate-300 ">
                   <div className="flex">
                     <Mandiri></Mandiri>
                     <h4 className="flex items-center ml-2 text-base font-semibold">
@@ -308,12 +303,16 @@ export const BuyPage = () => {
           </div>
           <div className="flex justify-between border-t border-gray-400 pt-2 mt-2 w-11/12 ml-4 text-sm">
             <p className="text-xl font-bold">Total Cost</p>
-            <p className="text-xl font-bold ">{totalCost.toLocaleString("en-US", {
+            <p className="text-xl font-bold ">
+              {totalCost.toLocaleString("en-US", {
                 style: "currency",
                 currency: "USD",
-              })}</p>
+              })}
+            </p>
           </div>
-          <Button classname="text-xs p-2 rounded-sm w-11/12 ml-4 bg-green-500">Checkout</Button>
+          <Button classname="text-xs p-2 rounded-sm w-11/12 ml-4 bg-green-500">
+            Checkout
+          </Button>
         </div>
       </div>
     </div>

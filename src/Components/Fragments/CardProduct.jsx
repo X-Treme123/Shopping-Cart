@@ -26,7 +26,7 @@ const Header = (props) => {
       <img
         src={image}
         alt="products"
-        className="p-5 rounded-t-lg w-full h-60 object-cover hover:scale-105 transition duration-200 ease-in-out"
+        className="p-5 rounded-t-lg w-full h-60 object-cover"
       />
     </Link>
   );

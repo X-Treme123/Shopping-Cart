@@ -18,7 +18,8 @@ const FormLogin = () => {
         localStorage.setItem("token", res);
         window.location.href = "/products";
       } else {
-        setLoginFailed(res.response.data);
+        console.log(res)
+        setLoginFailed(res.message);
       }
     });
   };

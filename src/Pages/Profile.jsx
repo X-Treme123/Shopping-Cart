@@ -1,66 +1,64 @@
 import Navbar from "../Components/Layouts/NavbarLayouts";
-import useLogin from "../hooks/useLogin"
-import Naruto from "/images/profile.png"
-import { Link } from "react-router-dom";
-import { FaAddressCard } from "react-icons/fa";
-import { useTotalPrice } from "../context/TotalPriceContext";
-import { useEffect, useState } from "react";
+import useLogin from "../hooks/useLogin";
+import Naruto from "/images/profile3.png";
+import { useContext } from "react";
 import { useSelector } from "react-redux";
+import { DarkMode } from "../context/DarkMode";
 
+const ProfilePage = () => {
+  const username = useLogin();
+  const { isDarkMode } = useContext(DarkMode);
 
+  //   useEffect(() => {
+  //     const sum = cart.reduce((acc, item) => {
+  //       return acc + item.qty;
+  //     }, 0);
+  //     setTotalCart(sum);
+  //   }, [cart]);
 
-const ProfilePage = (props) => {
-    const {children} = props
-    const username = useLogin();
-    const {total} = useTotalPrice()
-    const cart = useSelector((state) => state.cart.data)
-    const [totalCart, setTotalCart] = useState()
-
-    useEffect(() => {
-        const sum = cart.reduce((acc, item) => {
-            return acc + item.qty;
-        }, 0)
-        setTotalCart(sum)
-    }, [cart]) 
-
-
-    return(
-        <div>
-            <Navbar type="Profile"/>
-            <div className="h-80 flex justify-evenly items-center bg-slate-200">
-                {children}
-                <Link 
-                to={""}><img className="rounded-full absolute mx-10 h-80" src={Naruto} alt="Pictures" /></Link>
-                <div className="text-black mx-40">
-                    <h1 className="font-extrabold text-4xl my-3">{username}</h1>
-                    <h1 className="text-3xl font-semibold">Founder of TrendMart</h1>
-                </div>
-                <div className="text-black font-bold text-2xl flex">
-                    <h1>Instagram</h1>
-                    <h1>Instagram</h1>
-                    <h1>Instagram</h1>
-                </div>
-            </div>
-            <div className="h-80 flex justify-end p-40 items-center text-3xl">
-                <div className="flex flex-col items-center p-6 px-20 mx-5 text-white font-bold bg-blue-700 hover:bg-blue-500 cursor-pointer rounded-3xl">
-                    <p className="text-6xl my-3"><FaAddressCard /></p>
-                    <h1>Price Total</h1>
-                    {total.toLocaleString("en-US", {style: "currency", currency: "USD"})}
-                </div>
-                <div className="flex flex-col items-center p-6  px-20 mx-5 text-white font-bold bg-blue-700 hover:bg-blue-500 cursor-pointer rounded-3xl">
-                    <p className="text-6xl my-3"><FaAddressCard /></p>
-                    <h1>Item Total</h1>
-                    <h1>{totalCart}</h1>
-                </div>
-                <div className="flex flex-col items-center p-6 px-12 mx-5 text-white font-bold bg-blue-700 hover:bg-blue-500 cursor-pointer rounded-3xl">
-                    <p className="text-6xl my-3"><FaAddressCard /></p>
-                    <h1>Card Member</h1>
-                    <h1>Active</h1>
-                </div>
-            </div>
-            <div className="h-[26.8vh] bg-white"></div>
+  return (
+    <div>
+      <Navbar type="Profile" />
+      <div className={`p-5 h-[91.8vh] w-auto text-white flex justify-center items-center ${isDarkMode ? "bg-slate-900" : "bg-slate-200"}`}>
+        <div className={`w-2/4 p-6 flex flex-col item rounded-xl ${isDarkMode ? "bg-slate-800 border-2 border-slate-700" : "bg-slate-100 text-black border-slate-300 border-2"}`}>
+          <p className="text-2xl font-bold">Your Account</p>
+          <div className="my-3 text-xl">
+            <p className="text-gray-400 font-semibold py-5">Profile Picture</p>
+            <img
+              src={Naruto}
+              alt="Profile"
+              width={150}
+              className="rounded-full"
+            />
+          </div>
+          <div className="my-3 w-auto">
+            <p className="font-bold text-2xl">Name</p>
+            <p className="text-xl text-gray-400 font-semibold py-3 border-b-2">
+              {username}
+            </p>
+          </div>
+          <div className="my-3 w-auto">
+            <p className="text-2xl font-bold">Email Address</p>
+            <p className="text-xl text-gray-400 font-semibold py-3 border-b-2">
+              example@gmail.com
+            </p>
+          </div>
+          <div className="my-3 w-auto">
+            <p className="text-2xl font-bold">Address</p>
+            <p className="text-xl text-gray-400 font-semibold py-3 border-b-2">
+              Jakarta, Indonesia
+            </p>
+          </div>
+          <div className="my-3 w-auto">
+            <p className="text-2xl font-bold">Phone Number</p>
+            <p className="text-xl text-gray-400 font-semibold py-3 border-b-2">
+              +62 123456789
+            </p>
+          </div>
         </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
 
-export default ProfilePage
+export default ProfilePage;

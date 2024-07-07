@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 
 const Banner = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const images = ["/images/banner3.jpg", "/images/banner2.jpg", "/images/banner3.jpg"];
+  const images = [
+    "/images/banner3.jpg",
+    "/images/banner2.jpg",
+    "/images/banner3.jpg",
+  ];
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -44,8 +48,16 @@ const Banner = () => {
         </div>
       </div>
       <div className="w-[27%] h-auto flex flex-col ml-5 rounded-xl gap-16">
-        <img src="/images/banner5.png" alt="banner" className="shadow-xl rounded-xl"/>
-        <img src="/images/banner5.png" alt="banner" className="shadow-xl rounded-xl"/>
+        <img
+          src="/images/banner5.png"
+          alt="banner"
+          className="shadow-xl rounded-xl"
+        />
+        <img
+          src="/images/banner5.png"
+          alt="banner"
+          className="shadow-xl rounded-xl"
+        />
       </div>
     </div>
   );
