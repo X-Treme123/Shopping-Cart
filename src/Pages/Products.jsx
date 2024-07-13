@@ -1,8 +1,7 @@
-import { Fragment, useContext, useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import CardProduct from "../Components/Fragments/CardProduct";
 import { getProducts } from "../Services/products.service";
 import Navbar from "../Components/Layouts/NavbarLayouts";
-import { DarkMode } from "../context/DarkMode";
 import Banner from "../Components/Fragments/Banner";
 import { useSelector } from "react-redux";
 import { useTotalDispathPrice } from "../context/TotalPriceContext";
@@ -11,7 +10,6 @@ import { Footer } from "../Components/Layouts/Footer";
 const ProductsPages = () => {
   const cart = useSelector((state) => state.cart.data);
   const dispatch = useTotalDispathPrice();
-  const { isDarkMode } = useContext(DarkMode);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -40,7 +38,7 @@ const ProductsPages = () => {
     <Fragment>
       {/* Navbar */}
       <Navbar type="Products" />
-      <div className={`${isDarkMode && "bg-slate-900 text-white"}`}>
+      <div>
         {/* Banner */}
         <Banner />
         <div className={`flex justify-center`}>

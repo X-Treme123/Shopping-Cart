@@ -10,10 +10,9 @@ import { DarkMode } from "../../context/DarkMode";
 Modal.setAppElement('#root');
 
 const CardProduct = (props) => {
-  const { isDarkMode } = useContext(DarkMode);
   const { children } = props;
   return (
-    <div className={`flex flex-col w-auto h-auto justify-center rounded-xl m-10 max-w-xs border-gray-200 shadow-xl hover:shadow-2xl border-2 hover:border-gray-300 transition duration-300 ease-in-out ${isDarkMode ? "bg-slate-800 border-slate-700 hover:border-slate-600" : "bg-white"}`}>
+    <div className={`flex flex-col w-auto h-auto justify-center rounded-xl m-10 max-w-xs border-gray-200 shadow-xl hover:shadow-2xl border-2 hover:border-gray-300 transition duration-300 ease-in-outbg-white`}>
       {children}
     </div>
   );
@@ -26,7 +25,7 @@ const Header = (props) => {
       <img
         src={image}
         alt="products"
-        className="p-5 rounded-t-lg w-full h-60 object-cover"
+        className="p-5 rounded-t-lg w-full h-60 object-contain"
       />
     </Link>
   );
@@ -61,7 +60,7 @@ const Footer = (props) => {
         ${" "}
         {price.toLocaleString("en-US", { styles: "currency", currency: "USD" })}
       </span>
-      <Button className="bg-blue-600" onClick={handleAddToCart}>
+      <Button classname="bg-green-500" onClick={handleAddToCart}>
         Add To Cart
       </Button>
       <Modal

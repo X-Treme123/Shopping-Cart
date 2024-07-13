@@ -8,17 +8,17 @@ const NavbarLogin = () => {
   };
 
   return (
-    <div className="h-screen">
-      <nav className="bg-green-500 backdrop-blur-lg text-white flex justify-between px-10 h-20 items-center">
-        <h1 className="text-2xl text-white font-bold">TrendMart</h1>
+    <div className="h-screen w-auto">
+      <nav className="bg-white backdrop-blur-lg flex justify-between px-10 h-20 items-center">
+        <h1 className="text-2xl font-semibold italic font-serif text-green-500">TrendMart</h1>
         <Button onClick={handleLogin}>Login</Button>
       </nav>
-      <div className="border border-slate-400 flex justify-center items-start flex-col flex-grow bg-cover bg-center background-image drop-shadow-md min-h-screen">
+      <div className="flex justify-center items-start flex-col flex-grow bg-cover bg-center background-image min-h-screen">
         <div className="flex flex-col md:w-1/2 p-3 mx-8">
-          <h1 className="font-bold text-2xl md:text-3xl lg:text-4xl text-white">
+          <h1 className="font-bold text-2xl md:text-3xl lg:text-4xl">
             Welcome To TrendMart
           </h1>
-          <h1 className="font-normal text-sm md:text-base  my-3 text-white">
+          <h1 className="font-normal text-sm md:text-base  my-3">
             Nikmati pengalaman berbelanja produk kecantikan dan kosmetik terbaik
             yang pernah Anda rasakan di sini. Kami dengan bangga menawarkan
             berbagai macam produk berkualitas tinggi dari brand ternama yang

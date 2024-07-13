@@ -1,14 +1,6 @@
 .background-image {
-    background-image: url('images/background.jpg');
     background-size: cover;
     background-position: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     min-height: 91.8vh;
-}
-
-.outline-text{
-    text-shadow: -1px -1px 0 #000,  
-         1px -1px 0 #000,
-        -1px  1px 0 #000,
-         1px  1px 0 #000;
 }
