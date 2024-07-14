@@ -19,8 +19,8 @@ const ProfilePage = () => {
   return (
     <div>
       <Navbar type="Profile" />
-      <div className={`p-5 h-[91.8vh] w-auto text-white flex justify-center items-center ${isDarkMode ? "bg-slate-900" : "bg-slate-200"}`}>
-        <div className={`w-2/4 p-6 flex flex-col item rounded-xl ${isDarkMode ? "bg-slate-800 border-2 border-slate-700" : "bg-slate-100 text-black border-slate-300 border-2"}`}>
+      <div className={`p-5 h-[91.8vh] w-auto text-white flex justify-center items-center bg-white`}>
+        <div className={`w-2/4 p-6 flex flex-col item rounded-xl bg-white text-black border-slate-100 border-2`}>
           <p className="text-2xl font-bold">Your Account</p>
           <div className="my-3 text-xl">
             <p className="text-gray-400 font-semibold py-5">Profile Picture</p>

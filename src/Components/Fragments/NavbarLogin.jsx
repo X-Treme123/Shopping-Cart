@@ -7,27 +7,32 @@ const NavbarLogin = () => {
     window.location.href = "/login";
   };
 
+  const handleRegist = () => {
+    window.location.href = "/register";
+  };
+
   return (
     <div className="h-screen w-auto">
-      <nav className="bg-white backdrop-blur-lg flex justify-between px-10 h-20 items-center">
-        <h1 className="text-2xl font-semibold italic font-serif text-green-500">TrendMart</h1>
-        <Button onClick={handleLogin}>Login</Button>
+      <nav className="bg-white backdrop-blur-lg flex justify-between px-10 h-20 items-center shadow-md">
+        <h1 className="text-2xl font-semibold italic font-serif text-green-500">
+          TrendMart
+        </h1>
+        <div className="flex items-center">
+        <Button classname="bg-white border-2 border-green-500 text-green-500 mx-2 hover:text-white" onClick={handleLogin}>
+          Login
+        </Button>
+        <Button classname="bg-green-500 text-white hover:bg-white hover:text-green-500 border-2 hover:border-green-500" onClick={handleRegist}>
+          Regist
+        </Button>
+        </div>
       </nav>
-      <div className="flex justify-center items-start flex-col flex-grow bg-cover bg-center background-image min-h-screen">
-        <div className="flex flex-col md:w-1/2 p-3 mx-8">
-          <h1 className="font-bold text-2xl md:text-3xl lg:text-4xl">
-            Welcome To TrendMart
+      <div className="flex justify-center items-center flex-col flex-grow bg-cover bg-center background-image min-h-screen">
+        <div className="flex flex-col items-center md:w-2/2">
+          <h1 className="font-semibold font-serif italic text-2xl md:text-2xl lg:text-3xl">
+            Welcome To <span className="text-green-500">TrendMart</span>
           </h1>
-          <h1 className="font-normal text-sm md:text-base  my-3">
-            Nikmati pengalaman berbelanja produk kecantikan dan kosmetik terbaik
-            yang pernah Anda rasakan di sini. Kami dengan bangga menawarkan
-            berbagai macam produk berkualitas tinggi dari brand ternama yang
-            telah terpercaya oleh banyak pengguna. Dengan berbagai pilihan yang
-            tersedia, kami memastikan bahwa setiap produk yang Anda pilih akan
-            membuat Anda tampil lebih menawan, percaya diri, dan selalu siap
-            menghadapi hari dengan penuh semangat. Kami berkomitmen untuk
-            memberikan yang terbaik, sehingga Anda dapat merasakan perawatan
-            kecantikan yang luar biasa setiap hari.
+          <h1 className="font-normal text-sm md:text-base lg:text-lg font-serif text-gray-500">
+            Belanja Mudah, Gaya Maksimal!
           </h1>
         </div>
       </div>

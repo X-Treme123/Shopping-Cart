@@ -60,7 +60,7 @@ const Footer = (props) => {
         ${" "}
         {price.toLocaleString("en-US", { styles: "currency", currency: "USD" })}
       </span>
-      <Button classname="bg-green-500" onClick={handleAddToCart}>
+      <Button classname="bg-green-500 text-white" onClick={handleAddToCart}>
         Add To Cart
       </Button>
       <Modal

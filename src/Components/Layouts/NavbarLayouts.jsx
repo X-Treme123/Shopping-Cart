@@ -45,7 +45,7 @@ const Navbar = (props) => {
       className={`bg-white flex justify-between px-10 h-20 items-center sticky top-0 z-50 transition-transform duration-300 ${
         isVisible ? "transform translate-y-0" : "transform -translate-y-full"
       }`}>
-      <h1 className="ml-20 font-semibold font-serif italic text-green-500 text-2xl">
+      <h1 className="font-semibold font-serif italic text-green-500 text-2xl">
         TrendMart
       </h1>
       <div className="flex justify-center items-center">

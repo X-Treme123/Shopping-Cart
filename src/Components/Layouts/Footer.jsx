@@ -1,59 +1,146 @@
-import { TbClover } from "react-icons/tb";
-import { AboutMe } from "../Fragments/AboutMe";
+import { Link } from "react-router-dom";
+import { About } from "../Elements/About";
 
 export const Footer = () => {
   return (
     <div>
-      <div className="w-full flex text-justify px-16 py-24 text-sm">
-        {/* Tentang Kami */}
-        <div className="w-1/5 ml-8">
-          <p className="font-bold mb-2 text-xl">About Me</p>
-          <AboutMe />
+      <div className="flex flex-col bg-slate-800 text-white h-[45vh] px-7 mt-10">
+        <div className="flex justify-between items-center p-8">
+          <div className="flex items-center">
+            <img
+              src="/public/images/logo.png"
+              width={60}
+              alt="Logo TrendMart"
+              className="border-2 rounded-full"
+            />
+            <p className="mx-2 font-bold text-2xl italic font-serif">TrendMart</p>
+          </div>
+          <div className="flex space-x-5">
+            <About to="https://www.linkedin.com/in/faizal-putra-ramadhan-623372268/">
+              <img
+                src="/public/images/linkedin.png"
+                alt="Linked In"
+                width={30}
+                className="cursor-pointer rounded-xl border-2"
+              />
+            </About>
+            <About to="https://www.instagram.com/xfzlptr_/">
+              <img
+                src="/public/images/instagram.jpeg"
+                alt="Linked In"
+                width={30}
+                className="cursor-pointer rounded-xl border-2"
+              />
+            </About>
+            <About to="https://x.com/?lang=en">
+              <img
+                src="/public/images/x.png"
+                alt="Linked In"
+                width={30}
+                className="cursor-pointer rounded-xl border-2"
+              />
+            </About>
+            <About to="https://www.tiktok.com/@xfzlptr_?lang=en">
+              <img
+                src="/public/images/tiktok.png"
+                alt="Linked In"
+                width={30}
+                className="cursor-pointer rounded-xl border-2"
+              />
+            </About>
+            <About to="https://github.com/X-Treme123?tab=repositories">
+              <img
+                src="/public/images/github.png"
+                alt="Linked In"
+                width={30}
+                className="cursor-pointer rounded-xl border-2"
+              />
+            </About>
+          </div>
         </div>
-        <div className="w-4/5 mx-6">
-          <p className="font-bold mb-2 text-xl">
-            TrendMart - Enjoy Shopping Enjoy Your Life
-          </p>
-          <p className="text-base">
-            TrendMart takes you to the world of online shopping with a local
-            touch rich and limitless experience. As an e-commerce platform
-            superior in the archipelago region, we invite you to exploring
-            cultural riches through a collection of quality products high which
-            displays the beauty and diversity of the archipelago's heritage.
-          </p>
-          <br />
-          <p className="font-bold pb-2 text-base">Why Choose TrendMart?</p>
-          <ol className="list-decimal text-base">
-            <li>
-              289 / 5.000 Boundless Cultural Exploration TrendMart is the
-              gateway virtual experience of the beauty and richness of
-              Indonesian culture. Every product what we offer is a combination
-              of tradition and modernity, providing a unique and meaningful
-              shopping experience.
-            </li>
-            <li>
-              Shop with Peace of Mind: We understand the importance Trust in
-              online shopping TrendMart provides security transactions as a top
-              priority, ensuring every purchase You are done with a calm heart.
-            </li>
-            <li>
-              Inspirational Community: Join the Nusantara community Shop and be
-              part of our journey in preserving and promote cultural richness.
-              By registering your product or explore exciting offers, you
-              contribute to inspiring community growth.
-            </li>
-          </ol>
-        </div>
-      </div>
-      <div className="pb-5 px-10 flex items-center justify-between text-sm font-semibold">
-        <p className="flex items-center">
-          Made With <TbClover /> | Copyright &copy; 2024 Faizal Putra .
-        </p>
-        <div className="flex">
-          <p className="mx-1">Cookies |</p>
-          <p className="mx-1">Security |</p>
-          <p className="mx-1">Term of Service |</p>
-          <p className="mx-1">Privacy Statement</p>
+        <div className="mx-8">
+          <div className="flex justify-between font-bold font-mono text-2xl">
+            <Link to="#">
+              <p>Resource</p>
+            </Link>
+            <Link to="#">
+              <p>Pricing</p>
+            </Link>
+            <Link to="#">
+              <p>Company</p>
+            </Link>
+            <Link to="#">
+              <p>Social</p>
+            </Link>
+          </div>
+          <div className="flex justify-between items-center my-5">
+            {/* Kiri */}
+            <div className="flex flex-col space-y-3 text-gray-400 font-semibold">
+              <Link to="#">
+                <p>Application</p>
+              </Link>
+              <Link to="#">
+                <p>Documentation</p>
+              </Link>
+              <Link to="#">
+                <p>Systems</p>
+              </Link>
+              <Link to="#">
+                <p>FAQ</p>
+              </Link>
+            </div>
+            {/* Tengah */}
+            <div className="flex flex-col space-y-3 text-gray-400 font-semibold">
+              <Link to="#">
+                <p>Overview</p>
+              </Link>
+              <Link to="#">
+                <p>Premium Plans</p>
+              </Link>
+              <Link to="#">
+                <p>Affilate Program</p>
+              </Link>
+              <Link to="#">
+                <p>Promotions</p>
+              </Link>
+            </div>
+            {/* Tengah */}
+            <div className="flex flex-col space-y-3 text-gray-400 font-semibold">
+              <Link to="#">
+                <p>About Us</p>
+              </Link>
+              <Link to="#">
+                <p>Blog</p>
+              </Link>
+              <Link to="#">
+                <p>Partnerships</p>
+              </Link>
+              <Link to="#">
+                <p>Careers</p>
+              </Link>
+              <Link to="#">
+                <p>Press</p>
+              </Link>
+            </div>
+            {/* Kanan */}
+            <div className="flex flex-col items-end space-y-3 text-gray-400 font-semibold">
+              <Link to="#">
+                <p>Linked In</p>
+              </Link>
+              <Link to="#">
+                <p>Instagram</p>
+              </Link>
+              <Link to="#">
+                <p>X Application</p>
+              </Link>
+              <Link to="#">
+                <p>Tiktok</p>
+              </Link>
+              <Link to="#">
+                <p>Github</p>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </div>

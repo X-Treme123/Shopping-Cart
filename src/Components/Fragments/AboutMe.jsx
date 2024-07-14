@@ -1,28 +1,22 @@
 import { About } from "../Elements/About";
-import { FaInstagram } from "react-icons/fa";
-import { FaSquareFacebook } from "react-icons/fa6";
-import { FaTwitterSquare } from "react-icons/fa";
-import { FaWhatsapp } from "react-icons/fa6";
-import { FaTelegram } from "react-icons/fa";
 
 export const AboutMe = () => {
   return (
-    <div className="text-base">
+    <div className="w-12">
       {/* Instagram */}
       <About to="https://www.instagram.com/accounts/login/">
-        <p className="flex items-center"><FaInstagram /> <span className="px-2">Instagram</span></p>
+        <img src="/images/instagram.png" alt="Instagram" className="my-2 border-2 rounded-2xl"/>
+        <p>Instagram</p>
       </About>
       <About to="https://www.instagram.com/accounts/login/">
-        <p className="flex items-center"><FaSquareFacebook /> <span className="px-2">Facebook</span></p>
+        <img src="/images/x.png" alt="X" className="my-2 rounded-full border-2"/>
+        <p>X Aplication</p>
       </About>
       <About to="https://www.instagram.com/accounts/login/">
-        <p className="flex items-center"><FaTwitterSquare /> <span className="px-2">Twitter</span></p>
+        <img src="/images/linkedin.png" alt="Linked In" className="py-2"/>
       </About>
       <About to="https://www.instagram.com/accounts/login/">
-        <p className="flex items-center"><FaWhatsapp /> <span className="px-2">Whatsapp</span></p>
-      </About>
-      <About to="https://www.instagram.com/accounts/login/">
-        <p className="flex items-center"><FaTelegram /> <span className="px-2">Telegram</span></p>
+        <img src="/images/tiktok.png" alt="" className="py-2"/>
       </About>
     </div>
   );
