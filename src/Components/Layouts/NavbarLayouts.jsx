@@ -87,7 +87,7 @@ const Navbar = (props) => {
         {type === "Profile" &&
           Button({
             children: "Back",
-            classname: "bg-green-500",
+            classname: "bg-green-500 text-white",
             onClick: handleBack,
           })}
       </div>

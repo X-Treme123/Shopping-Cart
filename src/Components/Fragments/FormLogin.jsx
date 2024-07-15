@@ -19,7 +19,7 @@ const FormLogin = () => {
         window.location.href = "/products";
       } else {
         console.log(res)
-        setLoginFailed(res.message);
+        setLoginFailed(res.request.response);
       }
     });
   };
@@ -31,8 +31,7 @@ const FormLogin = () => {
   }, []);
 
   return (
-      <form onSubmit={handleLogin} 
-      className="text-white">
+      <form onSubmit={handleLogin}>
         <InputForm
           type="text"
           placeholder="Username"
@@ -46,7 +45,7 @@ const FormLogin = () => {
           label="Password"
           name="password"
         />
-        <Button classname="bg-green-500 w-full" type="submit">
+        <Button classname="bg-green-500 w-full text-white" type="submit">
           Login
         </Button>
         {loginfailed && (
