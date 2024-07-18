@@ -13,6 +13,7 @@ import BNI from "../Components/Elements/icons/Bank/BNI.jsx";
 import BRI from "../Components/Elements/icons/Bank/BRI.jsx";
 import Mandiri from "../Components/Elements/icons/Bank/Mandiri.jsx";
 import Button from "../Components/Elements/Button/Button.jsx";
+import { FaShoppingCart } from "react-icons/fa";
 
 export const BuyPage = () => {
   const cart = useSelector((state) => state.cart.data);
@@ -98,17 +99,19 @@ export const BuyPage = () => {
   }, [cart, products]);
 
   return (
-    <div className="h-screen w-full flex items-center justify-center bg-slate-900">
-      <div className="h-4/5 w-4/5 flex justify-center border-4 rounded-xl">
-        <div className="w-4/5 flex flex-col items-start gap-5 shadow-2xl shadow-gray-400 border-r-2 border-slate-400 bg-slate-200">
-          <div className="flex justify-between mx-4 border-b border-gray-400 flex-col gap-3">
-            <h1 className="text-xl font-bold py-5 text-blue-700">
+    <div className="h-screen w-full flex items-center justify-center">
+      <div className="h-4/5 w-4/5 flex justify-center border-2 rounded-lg">
+        <div className="w-4/5 flex flex-col items-start">
+          <div className="flex justify-between mx-4 flex-col gap-3">
+            <h1 className="text-2xl font-bold py-5 text-green-500">
               Shopping Cart
             </h1>
-            <h2 className="font-semibold">{totalCart} Items</h2>
+            <h2 className="font-semibold text-xl font-mono">
+              {totalCart} Items
+            </h2>
           </div>
-          <div className="h-[63vh] w-auto text-center overflow-y-auto">
-            <table className="w-full border-collapse bg-slate-100 border-b items-left font-semibold scroll-snap-type: y var(--tw-scroll-snap-strictness) ">
+          <div className="h-[63vh] w-full items-center overflow-y-auto">
+            <table className="w-full border-collapse border-b items-left font-semibold scroll-snap-type: y var(--tw-scroll-snap-strictness) ">
               <thead>
                 <tr className="text-left">
                   <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -135,9 +138,7 @@ export const BuyPage = () => {
                       (product) => product.id === item.id
                     );
                     return (
-                      <tr
-                        key={item.id}
-                        className={`border-y border-slate-300`}>
+                      <tr key={item.id} className={`border-y border-slate-300`}>
                         <td className="px-5 py-3">
                           <img
                             src={product.image}
@@ -168,8 +169,20 @@ export const BuyPage = () => {
                   })}
               </tbody>
             </table>
+            <div className="h-full flex flex-col items-center justify-center gap-3">
+              <FaShoppingCart className="text-4xl" />
+              <p className="text-2xl font-bold font-serif">
+                Your shopping cart is empty
+              </p>
+              <p className="text-lg text-gray-400 font-bold">
+                Come on, add your favorite products here
+              </p>
+              <Button classname="bg-green-500 text-white">
+                Start Shopping
+              </Button>
+            </div>
           </div>
-          <div className="flex justify-between items-center border-t-2 border-gray-400 w-full ">
+          <div className="flex justify-between items-center w-full ">
             <Link
               to="/products"
               className="flex items-center py-5 ml-5 text-slate-500 hover:text-slate-700 font-semibold text-lg transition-colors">
@@ -186,12 +199,12 @@ export const BuyPage = () => {
             ""
           </div>
         </div>
-        <div className="w-2/5 flex flex-col items-start gap-3 shadow-2xl shadow-gray-400 bg-slate-200">
-          <div className="flex justify-between mx-4 border-b border-gray-400 flex-col gap-3">
-            <p className="text-xl font-bold text-blue-700 py-5">
+        <div className="w-2/5 flex flex-col items-start gap-3">
+          <div className="flex justify-between mx-4 flex-col gap-3">
+            <p className="text-2xl font-bold text-green-500 py-5">
               Order Summary
             </p>
-            <p className="text-lg font-bold">Transaction</p>
+            <p className="text-xl font-bold font-mono">Transaction</p>
           </div>
           <div className="w-11/12 ml-4 mt-2">
             <label
@@ -203,7 +216,7 @@ export const BuyPage = () => {
               value={selectDelivery}
               onChange={handleDeliveryChange}
               id="shipping"
-              className="text-gray-500 focus:text-black outline-none w-full text-base rounded-lg block p-2 bg-slate-300">
+              className="text-gray-500 focus:text-black outline-none w-full text-base rounded-lg block p-2 bg-slate-100">
               <option value="default" disabled hidden>
                 Choose Delivery
               </option>
@@ -229,7 +242,7 @@ export const BuyPage = () => {
                 />
                 <label
                   htmlFor="bca"
-                  className="flex items-center justify-between w-full py-1 px-2 text-gray-500 bg-slate-300 border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-slate-300 ">
+                  className="flex items-center justify-between w-full py-1 px-2 text-gray-500 bg-slate-100 border border-gray-200 rounded-lg cursor-pointer peer-checked:border-green-500 peer-checked:text-green-500 hover:text-gray-600 hover:bg-slate-100 ">
                   <div className="flex">
                     <Bca></Bca>
                     <h4 className="flex items-center ml-2 text-base font-semibold">
@@ -250,7 +263,7 @@ export const BuyPage = () => {
                 />
                 <label
                   htmlFor="bni"
-                  className="flex items-center justify-between w-full py-1 px-2 text-gray-500 bg-slate-300 border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-slate-300 ">
+                  className="flex items-center justify-between w-full py-1 px-2 text-gray-500 bg-slate-100 border border-gray-200 rounded-lg cursor-pointer peer-checked:border-green-500 peer-checked:text-green-500 hover:text-gray-600 hover:bg-slate-100 ">
                   <div className="flex">
                     <BNI></BNI>
                     <h4 className="flex items-center ml-2 text-base font-semibold">
@@ -270,7 +283,7 @@ export const BuyPage = () => {
                 />
                 <label
                   htmlFor="bri"
-                  className="flex items-center justify-between w-full py-1 px-2 text-gray-500 bg-slate-300 border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-slate-300 ">
+                  className="flex items-center justify-between w-full py-1 px-2 text-gray-500 bg-slate-100 border border-gray-200 rounded-lg cursor-pointer peer-checked:border-green-500 peer-checked:text-green-500 hover:text-gray-600 hover:bg-slate-100 ">
                   <div className="flex">
                     <BRI></BRI>
                     <h4 className="flex items-center ml-2 text-base font-semibold">
@@ -290,7 +303,7 @@ export const BuyPage = () => {
                 />
                 <label
                   htmlFor="mandiri"
-                  className="flex items-center justify-between w-full py-1 px-2 text-gray-500 bg-slate-300 border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-slate-300 ">
+                  className="flex items-center justify-between w-full py-1 px-2 text-gray-500 bg-slate-100 border border-gray-200 rounded-lg cursor-pointer peer-checked:border-green-500 peer-checked:text-green-500 hover:text-gray-600 hover:bg-slate-100 ">
                   <div className="flex">
                     <Mandiri></Mandiri>
                     <h4 className="flex items-center ml-2 text-base font-semibold">
@@ -301,18 +314,20 @@ export const BuyPage = () => {
               </li>
             </ul>
           </div>
-          <div className="flex justify-between border-t border-gray-400 pt-2 mt-2 w-11/12 ml-4 text-sm">
-            <p className="text-xl font-bold">Total Cost</p>
-            <p className="text-xl font-bold ">
-              {totalCost.toLocaleString("en-US", {
-                style: "currency",
-                currency: "USD",
-              })}
-            </p>
+          <div className="w-11/12 mx-2 flex flex-col gap-3 items-center">
+            <div className="flex justify-between w-full mx-2 text-sm">
+              <p className="text-xl font-bold mx-2">Total Cost</p>
+              <p className="text-xl font-bold ">
+                {totalCost.toLocaleString("en-US", {
+                  style: "currency",
+                  currency: "USD",
+                })}
+              </p>
+            </div>
+            <Button classname="text-xs text-white p-2 rounded-sm w-full ml-4 bg-green-500">
+              Checkout
+            </Button>
           </div>
-          <Button classname="text-xs p-2 rounded-sm w-11/12 ml-4 bg-green-500">
-            Checkout
-          </Button>
         </div>
       </div>
     </div>

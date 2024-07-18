@@ -11,6 +11,9 @@ const AuthLayouts = (props) => {
   return (
     <div
       className="flex justify-center min-h-screen items-center">
+        <nav className="absolute top-10 font-bold text-3xl italic text-green-500 font-serif">
+          TrendMart
+        </nav>
         <div className="w-full max-w-md border-4 p-8 rounded-xl">
           {/* <button
             className="absolute right-2 top-2 px-5 hover:bg-green-700 bg-green-500 transition duration-200 ease-in-out p-2 text-green-500 rounded"
