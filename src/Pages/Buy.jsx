@@ -63,16 +63,21 @@ export const BuyPage = () => {
     setDelivery(cost);
   };
 
+  const handleClick = () => {
+    window.location.href = "/products";
+  };
+
   const totalCost = total + delivery;
 
-  const handleRemoveProduct = (item) => {
-    const updatedProducts = products.filter((_, i) => i !== item);
+  const handleRemoveProduct = (itemId) => {
+    // Update cart state by removing the item with the given itemId
+    const updatedCart = cart.filter((item) => item.id !== itemId);
 
-    // Menyimpan data yang sudah diupdate ke local storage
-    localStorage.setItem("cart", JSON.stringify(updatedProducts));
+    // Save the updated cart to local storage
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
 
-    // Mengupdate state dengan data yang baru
-    setProducts(updatedProducts);
+    // Dispatch an action to update the cart in the Redux store
+    reduxDispatch({ type: "UPDATE_CART", payload: updatedCart });
   };
 
   useEffect(() => {
@@ -106,81 +111,91 @@ export const BuyPage = () => {
             <h1 className="text-2xl font-bold py-5 text-green-500">
               Shopping Cart
             </h1>
-            <h2 className="font-semibold text-xl font-mono">
+            <h2 className="font-semibold text-xl font-mono border-b-2 mb-2">
               {totalCart} Items
             </h2>
           </div>
-          <div className="h-[63vh] w-full items-center overflow-y-auto">
-            <table className="w-full border-collapse border-b items-left font-semibold scroll-snap-type: y var(--tw-scroll-snap-strictness) ">
-              <thead>
-                <tr className="text-left">
-                  <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Product Detail
-                  </th>
-                  <th className="px-20 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Name
-                  </th>
-                  <th className="px-20 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Quantity
-                  </th>
-                  <th className="px-20 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Price
-                  </th>
-                  <th className="px-20 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Item Selection
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {products.length > 0 &&
-                  cart.map((item) => {
-                    const product = products.find(
-                      (product) => product.id === item.id
-                    );
-                    return (
-                      <tr key={item.id} className={`border-y border-slate-300`}>
-                        <td className="px-5 py-3">
-                          <img
-                            src={product.image}
-                            alt={product.title}
-                            width="50"
-                            className="p-1 w-40 h-40 rounded-t-lg object-contain border-2 "
-                          />
-                        </td>
-                        <td className="px-10 py-3">
-                          {product.title.substring(0, 15)}...
-                        </td>
-                        <td className="px-10 py-3">{item.qty}</td>
-                        <td className="px-10 py-3">
-                          {(product.price * item.qty).toLocaleString("en-US", {
-                            style: "currency",
-                            currency: "USD",
-                          })}
-                        </td>
-                        <td>
-                          <button
-                            className="bg-blue-700 px-2 py-1 text-slate-200 rounded-md hover:text-slate-200 hover:bg-blue-500 transition-colors ease-in-out"
-                            onClick={() => handleRemoveProduct(item)}>
-                            Remove
-                          </button>
-                        </td>
-                      </tr>
-                    );
-                  })}
-              </tbody>
-            </table>
-            <div className="h-full flex flex-col items-center justify-center gap-3">
-              <FaShoppingCart className="text-4xl" />
-              <p className="text-2xl font-bold font-serif">
-                Your shopping cart is empty
-              </p>
-              <p className="text-lg text-gray-400 font-bold">
-                Come on, add your favorite products here
-              </p>
-              <Button classname="bg-green-500 text-white">
-                Start Shopping
-              </Button>
-            </div>
+          <div className="h-[63vh] w-full text-center overflow-y-auto">
+            {totalCart > 0 ? (
+              <table className="w-full border-collapse border-b items-left font-semibold scroll-snap-type: y var(--tw-scroll-snap-strictness) ">
+                <thead>
+                  <tr className="text-left">
+                    <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Product Detail
+                    </th>
+                    <th className="px-20 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Name
+                    </th>
+                    <th className="px-20 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Quantity
+                    </th>
+                    <th className="px-20 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Price
+                    </th>
+                    <th className="px-20 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Item Selection
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {products.length > 0 &&
+                    cart.map((item) => {
+                      const product = products.find(
+                        (product) => product.id === item.id
+                      );
+                      return (
+                        <tr
+                          key={item.id}
+                          className={`border-y border-slate-300`}>
+                          <td className="px-5 py-3">
+                            <img
+                              src={product.image}
+                              alt={product.title}
+                              width="50"
+                              className="p-1 w-40 h-40 rounded-t-lg object-contain border-2 "
+                            />
+                          </td>
+                          <td className="px-10 py-3">
+                            {product.title.substring(0, 15)}...
+                          </td>
+                          <td className="px-10 py-3">{item.qty}</td>
+                          <td className="px-10 py-3">
+                            {(product.price * item.qty).toLocaleString(
+                              "en-US",
+                              {
+                                style: "currency",
+                                currency: "USD",
+                              }
+                            )}
+                          </td>
+                          <td>
+                            <button
+                              className="bg-blue-700 px-2 py-1 text-slate-200 rounded-md hover:text-slate-200 hover:bg-blue-500 transition-colors ease-in-out"
+                              onClick={() => handleRemoveProduct(item)}>
+                              Remove
+                            </button>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                </tbody>
+              </table>
+            ) : (
+              <div className="h-full flex flex-col items-center justify-center gap-3">
+                <FaShoppingCart className="text-4xl" />
+                <p className="text-2xl font-bold font-serif">
+                  Your shopping cart is empty
+                </p>
+                <p className="text-lg text-gray-400 font-bold">
+                  Come on, add your favorite products here
+                </p>
+                <Button
+                  classname="bg-green-500 text-white"
+                  onClick={handleClick}>
+                  Start Shopping
+                </Button>
+              </div>
+            )}
           </div>
           <div className="flex justify-between items-center w-full ">
             <Link
