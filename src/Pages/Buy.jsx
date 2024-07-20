@@ -14,6 +14,7 @@ import BRI from "../Components/Elements/icons/Bank/BRI.jsx";
 import Mandiri from "../Components/Elements/icons/Bank/Mandiri.jsx";
 import Button from "../Components/Elements/Button/Button.jsx";
 import { FaShoppingCart } from "react-icons/fa";
+import "./Buy.css";
 
 export const BuyPage = () => {
   const cart = useSelector((state) => state.cart.data);
@@ -115,7 +116,7 @@ export const BuyPage = () => {
               {totalCart} Items
             </h2>
           </div>
-          <div className="h-[63vh] w-full text-center overflow-y-auto">
+          <div className="container h-[63vh] w-full text-center overflow-y-auto">
             {totalCart > 0 ? (
               <table className="w-full border-collapse border-b items-left font-semibold scroll-snap-type: y var(--tw-scroll-snap-strictness) ">
                 <thead>
