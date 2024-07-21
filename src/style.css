@@ -74,4 +74,8 @@ body {
   z-index: 999;
 }
 
+.container::-webkit-scrollbar{
+  display: none;
+}
+
 

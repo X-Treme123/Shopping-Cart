@@ -6,6 +6,7 @@ import Banner from "../Components/Fragments/Banner";
 import { useSelector } from "react-redux";
 import { useTotalDispathPrice } from "../context/TotalPriceContext";
 import { Footer } from "../Components/Layouts/Footer";
+import "../style.css";
 
 const ProductsPages = () => {
   const cart = useSelector((state) => state.cart.data);
@@ -41,8 +42,8 @@ const ProductsPages = () => {
       <div>
         {/* Banner */}
         <Banner />
-        <div className={`flex justify-center`}>
-          <div className="flex flex-wrap">
+        <div className="flex justify-center items-center flex-col">
+          <div className="flex flex-wrap \">
             <div className="w-full h-auto flex flex-wrap justify-center">
               {/* products */}
               {products.length > 0 &&

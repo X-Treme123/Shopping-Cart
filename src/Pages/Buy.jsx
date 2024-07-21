@@ -78,7 +78,7 @@ export const BuyPage = () => {
     localStorage.setItem("cart", JSON.stringify(updatedCart));
 
     // Dispatch an action to update the cart in the Redux store
-    reduxDispatch({ type: "UPDATE_CART", payload: updatedCart });
+    reduxDispatch({ type: "UPDATE", payload: updatedCart });
   };
 
   useEffect(() => {
