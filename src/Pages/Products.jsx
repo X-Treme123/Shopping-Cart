@@ -39,7 +39,7 @@ const ProductsPages = () => {
     <Fragment>
       {/* Navbar */}
       <Navbar type="Products" />
-      <div>
+      <div className="container overflow-y-auto">
         {/* Banner */}
         <Banner />
         <div className="flex justify-center items-center flex-col">

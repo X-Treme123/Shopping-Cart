@@ -18,7 +18,10 @@ body {
   font-size: 1.25rem; /* 20px */
 }
 
-
+/* Tambahkan ini di dalam file CSS yang digunakan atau buat file CSS baru */
+body::-webkit-scrollbar {
+  display: none;
+}
 
 .popup {
   display: none;
@@ -74,8 +77,6 @@ body {
   z-index: 999;
 }
 
-.container::-webkit-scrollbar{
-  display: none;
-}
+
 
 
