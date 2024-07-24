@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { MdArrowBackIos } from "react-icons/md";
@@ -14,11 +14,11 @@ import BRI from "../Components/Elements/icons/Bank/BRI.jsx";
 import Mandiri from "../Components/Elements/icons/Bank/Mandiri.jsx";
 import Button from "../Components/Elements/Button/Button.jsx";
 import { FaShoppingCart } from "react-icons/fa";
-import "./Buy.css";
+import { removeFromCart } from "../redux/slices/cartSlice.js";
 
 export const BuyPage = () => {
   const cart = useSelector((state) => state.cart.data);
-  const dispatch = useTotalDispathPrice();
+  const dispatch = useDispatch();
   const { total } = useTotalPrice();
   const [products, setProducts] = useState([]);
   const [totalCart, setTotalCart] = useState();
@@ -71,14 +71,9 @@ export const BuyPage = () => {
   const totalCost = total + delivery;
 
   const handleRemoveProduct = (itemId) => {
-    // Update cart state by removing the item with the given itemId
-    const updatedCart = cart.filter((item) => item.id !== itemId);
-
-    // Save the updated cart to local storage
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
-
-    // Dispatch an action to update the cart in the Redux store
-    reduxDispatch({ type: "UPDATE", payload: updatedCart });
+    console.log("Attempting to remove item with ID:", itemId); // Log
+    // Dispatch action to remove item from cart
+    dispatch(removeFromCart({ id: itemId }));
   };
 
   useEffect(() => {
@@ -172,7 +167,7 @@ export const BuyPage = () => {
                           <td>
                             <button
                               className="bg-blue-700 px-2 py-1 text-slate-200 rounded-md hover:text-slate-200 hover:bg-blue-500 transition-colors ease-in-out"
-                              onClick={() => handleRemoveProduct(item)}>
+                              onClick={() => handleRemoveProduct(item.id)}>
                               Remove
                             </button>
                           </td>
@@ -207,141 +202,114 @@ export const BuyPage = () => {
             </Link>
             <p className="text-black text-semibold font-bold pl-14">
               Total Price :{" "}
-              {total.toLocaleString("en-US", {
+              {totalCost.toLocaleString("en-US", {
                 style: "currency",
                 currency: "USD",
               })}
             </p>
-            ""
           </div>
         </div>
-        <div className="w-2/5 flex flex-col items-start gap-3">
-          <div className="flex justify-between mx-4 flex-col gap-3">
-            <p className="text-2xl font-bold text-green-500 py-5">
-              Order Summary
+        <div className="flex flex-col justify-between items-start w-[27%] h-full border-l-2 rounded-lg ">
+          <div className="py-5 px-5 text-left">
+            <p className="text-lg text-slate-500 font-semibold ">
+              Have a Promo Code ?
             </p>
-            <p className="text-xl font-bold font-mono">Transaction</p>
+            <form className="py-2 ">
+              <input
+                type="text"
+                placeholder="Apply a promo code here"
+                className="w-full py-1 px-2 rounded-md border border-slate-400 outline-none hover:border-slate-700 focus:border-slate-700"
+              />
+              <button className="bg-blue-700 mt-2 px-2 py-1 text-slate-200 rounded-md hover:text-slate-200 hover:bg-blue-500 transition-colors ease-in-out">
+                Apply
+              </button>
+            </form>
           </div>
-          <div className="w-11/12 ml-4 mt-2">
-            <label
-              htmlFor="shipping"
-              className="block my-2 text-base font-bold text-gray-500">
-              Delivery Option
-            </label>
-            <select
-              value={selectDelivery}
-              onChange={handleDeliveryChange}
-              id="shipping"
-              className="text-gray-500 focus:text-black outline-none w-full text-base rounded-lg block p-2 bg-slate-100">
-              <option value="default" disabled hidden>
-                Choose Delivery
-              </option>
-              <option value="free">Free Delivery - $0</option>
-              <option value="standard">Standard Delivery - $2</option>
-              <option value="express">Express Delivery - $5</option>
-              <option value="next">Next Day - $8</option>
-              <option value="same">Same Day - $10</option>
-            </select>
+          <div className="flex flex-col justify-start items-start w-full border-t-2 rounded-t-lg ">
+            <h2 className="text-lg font-semibold font-mono py-5 px-5 text-slate-500">
+              Shipping Method
+            </h2>
+            <form className="w-full px-5 text-slate-500 ">
+              <label className="py-1 flex justify-between items-center">
+                <input
+                  type="radio"
+                  name="delivery"
+                  value="free"
+                  onChange={handleDeliveryChange}
+                />
+                <span>Free Delivery</span>
+                <span>Free</span>
+              </label>
+              <label className="py-1 flex justify-between items-center">
+                <input
+                  type="radio"
+                  name="delivery"
+                  value="standard"
+                  onChange={handleDeliveryChange}
+                />
+                <span>Standard Delivery</span>
+                <span>2 USD</span>
+              </label>
+              <label className="py-1 flex justify-between items-center">
+                <input
+                  type="radio"
+                  name="delivery"
+                  value="express"
+                  onChange={handleDeliveryChange}
+                />
+                <span>Express Delivery</span>
+                <span>5 USD</span>
+              </label>
+              <label className="py-1 flex justify-between items-center">
+                <input
+                  type="radio"
+                  name="delivery"
+                  value="next"
+                  onChange={handleDeliveryChange}
+                />
+                <span>Next Day Delivery</span>
+                <span>8 USD</span>
+              </label>
+              <label className="py-1 flex justify-between items-center">
+                <input
+                  type="radio"
+                  name="delivery"
+                  value="same"
+                  onChange={handleDeliveryChange}
+                />
+                <span>Same Day Delivery</span>
+                <span>10 USD</span>
+              </label>
+            </form>
           </div>
-          <div className="w-11/12 ml-4 mt-2">
-            <p className="text-base font-bold text-gray-500">Payment</p>
-            <ul className="w-full">
-              {/* BCA */}
-              <li className="py-2">
-                <input
-                  type="radio"
-                  id="bca"
-                  name="paymentMethod"
-                  value="bca"
-                  className="hidden peer"
-                  required
-                />
-                <label
-                  htmlFor="bca"
-                  className="flex items-center justify-between w-full py-1 px-2 text-gray-500 bg-slate-100 border border-gray-200 rounded-lg cursor-pointer peer-checked:border-green-500 peer-checked:text-green-500 hover:text-gray-600 hover:bg-slate-100 ">
-                  <div className="flex">
-                    <Bca></Bca>
-                    <h4 className="flex items-center ml-2 text-base font-semibold">
-                      BANK CENTRAL ASIA
-                    </h4>
-                  </div>
-                </label>
-              </li>
-              {/* BNI */}
-              <li className="py-2">
-                <input
-                  type="radio"
-                  id="bni"
-                  name="paymentMethod"
-                  value="bni"
-                  className="hidden peer"
-                  required
-                />
-                <label
-                  htmlFor="bni"
-                  className="flex items-center justify-between w-full py-1 px-2 text-gray-500 bg-slate-100 border border-gray-200 rounded-lg cursor-pointer peer-checked:border-green-500 peer-checked:text-green-500 hover:text-gray-600 hover:bg-slate-100 ">
-                  <div className="flex">
-                    <BNI></BNI>
-                    <h4 className="flex items-center ml-2 text-base font-semibold">
-                      BANK NEGARA INDONESIA
-                    </h4>
-                  </div>
-                </label>
-              </li>
-              <li className="py-2">
-                <input
-                  type="radio"
-                  id="bri"
-                  name="paymentMethod"
-                  value="bri"
-                  className="hidden peer"
-                  required
-                />
-                <label
-                  htmlFor="bri"
-                  className="flex items-center justify-between w-full py-1 px-2 text-gray-500 bg-slate-100 border border-gray-200 rounded-lg cursor-pointer peer-checked:border-green-500 peer-checked:text-green-500 hover:text-gray-600 hover:bg-slate-100 ">
-                  <div className="flex">
-                    <BRI></BRI>
-                    <h4 className="flex items-center ml-2 text-base font-semibold">
-                      BANK RAKYAT INDONESIA
-                    </h4>
-                  </div>
-                </label>
-              </li>
-              <li className="py-2">
-                <input
-                  type="radio"
-                  id="mandiri"
-                  name="paymentMethod"
-                  value="mandiri"
-                  className="hidden peer"
-                  required
-                />
-                <label
-                  htmlFor="mandiri"
-                  className="flex items-center justify-between w-full py-1 px-2 text-gray-500 bg-slate-100 border border-gray-200 rounded-lg cursor-pointer peer-checked:border-green-500 peer-checked:text-green-500 hover:text-gray-600 hover:bg-slate-100 ">
-                  <div className="flex">
-                    <Mandiri></Mandiri>
-                    <h4 className="flex items-center ml-2 text-base font-semibold">
-                      BANK MANDIRI
-                    </h4>
-                  </div>
-                </label>
-              </li>
-            </ul>
-          </div>
-          <div className="w-11/12 mx-2 flex flex-col gap-3 items-center">
-            <div className="flex justify-between w-full mx-2 text-sm">
-              <p className="text-xl font-bold mx-2">Total Cost</p>
-              <p className="text-xl font-bold ">
-                {totalCost.toLocaleString("en-US", {
-                  style: "currency",
-                  currency: "USD",
-                })}
-              </p>
+          <div className="py-5 px-5 text-left w-full">
+            <p className="text-lg font-semibold font-mono text-slate-500 ">
+              Payment Method
+            </p>
+            <div className="flex justify-between items-center py-2 px-2 rounded-md border border-slate-400 ">
+              <label className="text-xs flex gap-2 items-center">
+                <input type="radio" name="payment" value="bca" />
+                <Bca />
+                <p>Bank BCA</p>
+              </label>
+              <label className="text-xs flex gap-2 items-center">
+                <input type="radio" name="payment" value="bni" />
+                <BNI />
+                <p>Bank BNI</p>
+              </label>
+              <label className="text-xs flex gap-2 items-center">
+                <input type="radio" name="payment" value="bri" />
+                <BRI />
+                <p>Bank BRI</p>
+              </label>
+              <label className="text-xs flex gap-2 items-center">
+                <input type="radio" name="payment" value="mandiri" />
+                <Mandiri />
+                <p>Bank Mandiri</p>
+              </label>
             </div>
-            <Button classname="text-xs text-white p-2 rounded-sm w-full ml-4 bg-green-500">
-              Checkout
+            <Button classname="bg-green-500 text-white w-full mt-5">
+              Pay
             </Button>
           </div>
         </div>

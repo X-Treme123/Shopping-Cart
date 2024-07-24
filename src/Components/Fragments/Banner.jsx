@@ -13,7 +13,7 @@ const Banner = () => {
       setCurrentIndex((prevIndex) =>
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
       );
-    }, 3000); // 3 detik
+    }, 5000); // 3 detik
 
     return () => clearInterval(intervalId); // Bersihkan interval saat komponen di-unmount
   }, [images]);
@@ -31,7 +31,7 @@ const Banner = () => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row justify-center items-center pt-5 w-full">
+    <div className="flex flex-col lg:flex-row justify-center items-center py-10 w-full">
       <div className="relative w-full lg:w-[65%] h-auto flex overflow-hidden shadow-xl rounded-xl mb-5 lg:mb-0 lg:mr-5">
         <div
           className="flex transition-transform duration-500"
