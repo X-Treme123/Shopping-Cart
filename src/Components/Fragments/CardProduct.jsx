@@ -10,7 +10,7 @@ Modal.setAppElement('#root');
 const CardProduct = (props) => {
   const { children } = props;
   return (
-    <div className="container flex flex-col min-w-auto min-h-auto justify-center rounded-xl m-2 max-w-xs border-gray-200 shadow-xl hover:shadow-2xl border-2 hover:border-gray-300 transition duration-300 ease-in-outbg-white">
+    <div className="container flex flex-col min-w-auto min-h-auto justify-center rounded-xl m-2 max-w-[228px] border-gray-200 shadow-xl hover:shadow-2xl border-2 hover:border-gray-300 transition duration-300 ease-in-outbg-white">
       {children}
     </div>
   );
@@ -53,12 +53,12 @@ const Footer = (props) => {
   };
 
   return (
-    <div className="flex items-center justify-around pb-5">
+    <div className="flex items-center justify-evenly pb-5">
       <span className="font-bold text-xl">
         ${" "}
         {price.toLocaleString("en-US", { styles: "currency", currency: "USD" })}
       </span>
-      <Button classname="bg-green-500 text-white" onClick={handleAddToCart}>
+      <Button classname="bg-green-500  text-white" onClick={handleAddToCart}>
         Add To Cart
       </Button>
       <Modal
