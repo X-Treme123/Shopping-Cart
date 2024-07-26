@@ -24,6 +24,8 @@ export const BuyPage = () => {
   const [totalCart, setTotalCart] = useState();
   const [delivery, setDelivery] = useState(0);
   const [selectDelivery, setSelectDelivery] = useState();
+  const [promoCode, setPromoCode] = useState("");
+  const [discount, setDiscount] = useState(0);
   const username = useLogin();
 
   useEffect(() => {
@@ -64,11 +66,23 @@ export const BuyPage = () => {
     setDelivery(cost);
   };
 
+  const handlePromoCodeChange = (e) => {
+    setPromoCode(e.target.value);
+  };
+
+  const applyPromoCode = () => {
+    if (promoCode.toLowerCase() === "paisal") {
+      setDiscount(0.5);
+    } else {
+      setDiscount(0);
+    }
+  };
+
   const handleClick = () => {
     window.location.href = "/products";
   };
 
-  const totalCost = total + delivery;
+  const totalCost = total + delivery - total * discount;
 
   const handleRemoveProduct = (itemId) => {
     console.log("Attempting to remove item with ID:", itemId); // Log
@@ -214,13 +228,18 @@ export const BuyPage = () => {
             <p className="text-lg text-slate-500 font-semibold ">
               Have a Promo Code ?
             </p>
-            <form className="py-2 ">
+            <form className="py-2 " onSubmit={(e) => e.preventDefault()}>
               <input
                 type="text"
                 placeholder="Apply a promo code here"
                 className="w-full py-1 px-2 rounded-md border border-slate-400 outline-none hover:border-slate-700 focus:border-slate-700"
+                value={promoCode}
+                onChange={handlePromoCodeChange}
               />
-              <button className="bg-blue-700 mt-2 px-2 py-1 text-slate-200 rounded-md hover:text-slate-200 hover:bg-blue-500 transition-colors ease-in-out">
+              <button
+                className="bg-blue-700 mt-2 px-2 py-1 text-slate-200 rounded-md hover:text-slate-200 hover:bg-blue-500 transition-colors ease-in-out"
+                onClick={applyPromoCode}
+              >
                 Apply
               </button>
             </form>

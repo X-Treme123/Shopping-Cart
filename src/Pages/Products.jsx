@@ -1,16 +1,18 @@
+import { useDispatch, useSelector } from "react-redux";
 import { Fragment, useEffect, useState } from "react";
 import CardProduct from "../Components/Fragments/CardProduct";
 import { getProducts } from "../Services/products.service";
 import Navbar from "../Components/Layouts/NavbarLayouts";
 import Banner from "../Components/Fragments/Banner";
-import { useSelector } from "react-redux";
 import { useTotalDispathPrice } from "../context/TotalPriceContext";
 import { Footer } from "../Components/Layouts/Footer";
 import "../style.css";
+import { addToCart } from "../redux/slices/cartSlice"; // Import addToCart action
 
 const ProductsPages = () => {
   const cart = useSelector((state) => state.cart.data);
-  const dispatch = useTotalDispathPrice();
+  const dispatch = useDispatch();
+  const totalDispatch = useTotalDispathPrice();
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -25,7 +27,7 @@ const ProductsPages = () => {
         const product = products.find((product) => product.id === item.id);
         return acc + product.price * item.qty;
       }, 0);
-      dispatch({
+      totalDispatch({
         type: "UPDATE",
         payload: {
           total: sum,
@@ -34,6 +36,10 @@ const ProductsPages = () => {
       localStorage.setItem("cart", JSON.stringify(cart));
     }
   }, [cart, products]);
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product)); // Dispatch addToCart action
+  };
 
   return (
     <Fragment>
@@ -53,7 +59,11 @@ const ProductsPages = () => {
                     <CardProduct.Body name={product.title}>
                       {product.description}
                     </CardProduct.Body>
-                    <CardProduct.Footer price={product.price} id={product.id} />
+                    <CardProduct.Footer
+                      price={product.price}
+                      id={product.id}
+                      onAddToCart={() => handleAddToCart(product)} // Add this line
+                    />
                   </CardProduct>
                 ))}
             </div>
