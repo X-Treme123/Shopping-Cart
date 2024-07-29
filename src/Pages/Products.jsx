@@ -50,7 +50,7 @@ const ProductsPages = () => {
         <Banner />
         <div className="flex justify-center items-center flex-col">
           <div className="flex flex-wrap \">
-            <div className="w-full h-auto flex flex-wrap justify-center">
+            <div className="w-full h-auto flex flex-wrap justify-start items-center mx-16">
               {/* products */}
               {products.length > 0 &&
                 products.map((product) => (
