@@ -78,7 +78,7 @@ export const BuyPage = () => {
   };
 
   const handleClick = () => {
-    window.location.href = "/products";
+    window.location.href = "/products"
   };
 
   const handleRemoveProduct = (itemId) => {
@@ -193,16 +193,9 @@ export const BuyPage = () => {
               <MdArrowBackIos />
               Continue Shopping
             </Link>
-            <p className="text-black text-semibold font-bold pl-14">
-              Total Price :{" "}
-              {total.toLocaleString("en-US", {
-                style: "currency",
-                currency: "USD",
-              })}
-            </p>
           </div>
         </div>
-        <div className="w-2/5 flex flex-col items-start gap-3">
+        <div className="w-2/5 flex flex-col items-start gap-3 border-2">
           <div className="flex justify-between mx-4 flex-col gap-3">
             <p className="text-2xl font-bold text-green-500 py-5">Order Summary</p>
             <p className="text-xl font-bold font-mono">Transaction</p>
@@ -246,22 +239,22 @@ export const BuyPage = () => {
               </button>
             </div>
           </div>
-          <div className="w-full ml-4 mt-2">
-            <p className="text-lg font-medium">Total price after discount:</p>
-            <p className="text-lg font-medium">
+          <div className="flex gap-2 justify-center mx-4">
+            <Bca />
+            <BNI />
+            <BRI />
+            <Mandiri />
+          </div>
+          <div className="w-11/12 ml-5 mt-2 flex justify-between">
+            <p className="text-lg font-bold">Total price</p>
+            <p className="text-lg font-bold">
               {totalCost.toLocaleString("en-US", {
                 style: "currency",
                 currency: "USD",
               })}
             </p>
           </div>
-          <div className="flex gap-2 justify-center mt-5">
-            <Bca />
-            <BNI />
-            <BRI />
-            <Mandiri />
-          </div>
-          <div className="flex gap-2 justify-center mt-5">
+          <div className="flex gap-2 justify-center w-full px-4">
             <Button classname="bg-green-500 text-white w-full">
               Confirm Payment
             </Button>

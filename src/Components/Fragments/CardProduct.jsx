@@ -67,14 +67,16 @@ const Footer = (props) => {
         contentLabel="Success Pop-up"
         className="modal"
         overlayClassName="modal-overlay border-4 border-slate-500 shadow-3xl">
-        <div className="flex flex-col items-center">
-          <img src="/public/images/verified.gif" 
-          alt="image pop-up" 
-          className="w-40 h-auto"/>
-          <h2 className="text-2xl font-bold mb-3">Item Added to Cart</h2>
-          <p>The item has been added to your cart.</p>
+        <div className="flex flex-col items-center p-6 bg-white rounded-lg">
+          <img 
+            src="/public/images/verified.gif" 
+            alt="image pop-up" 
+            className="w-40 h-auto mb-4"
+          />
+          <h2 className="text-2xl font-bold mb-3 text-green-600">Item Added to Cart</h2>
+          <p className="text-center mb-5">The item has been added to your cart.</p>
           <button
-            className="mt-5 bg-blue-600 text-white font-bold px-20 py-2 rounded hover:bg-blue-500 transition duration-100 ease-in-out"
+            className="mt-5 bg-green-500 text-white font-bold px-20 py-2 rounded hover:bg-green-400 transition duration-100 ease-in-out"
             onClick={() => setShowModal(false)}>
             Close
           </button>
