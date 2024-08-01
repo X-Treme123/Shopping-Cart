@@ -11,7 +11,7 @@ import BRI from "../Components/Elements/icons/Bank/BRI.jsx";
 import Mandiri from "../Components/Elements/icons/Bank/Mandiri.jsx";
 import Button from "../Components/Elements/Button/Button.jsx";
 import { FaShoppingCart } from "react-icons/fa";
-import { removeFromCart } from "../redux/slices/cartSlice.js";
+import { removeFromCart, incrementQuantity, decrementQuantity } from "../redux/slices/cartSlice.js";
 import "../style.css";
 
 export const BuyPage = () => {
@@ -36,7 +36,6 @@ export const BuyPage = () => {
   const handleDeliveryChange = (e) => {
     const selectOption = e.target.value;
     setSelectDelivery(selectOption);
-    // Update Delivery After Summary
     updateDelivery(selectOption);
   };
 
@@ -82,9 +81,15 @@ export const BuyPage = () => {
   };
 
   const handleRemoveProduct = (itemId) => {
-    console.log("Attempting to remove item with ID:", itemId); // Log
-    // Dispatch action to remove item from cart
     dispatch(removeFromCart({ id: itemId }));
+  };
+
+  const handleIncrementQty = (itemId) => {
+    dispatch(incrementQuantity({ id: itemId }));
+  };
+
+  const handleDecrementQty = (itemId) => {
+    dispatch(decrementQuantity({ id: itemId }));
   };
 
   useEffect(() => {
@@ -144,7 +149,7 @@ export const BuyPage = () => {
                     cart.map((item) => {
                       const product = products.find((product) => product.id === item.id);
                       return (
-                        <tr key={item.id} className={`border-y border-slate-300`}>
+                        <tr key={item.id} className="border-y border-slate-300">
                           <td className="px-5 py-3">
                             <img
                               src={product.image}
@@ -154,7 +159,21 @@ export const BuyPage = () => {
                             />
                           </td>
                           <td className="px-10 py-3">{product.title.substring(0, 15)}...</td>
-                          <td className="px-10 py-3">{item.qty}</td>
+                          <td className="px-5 py-3 flex items-center justify-center mt-16 space-x-3">
+                            <button
+                              className="bg-green-500 px-3 pb-1 rounded-lg text-white text-2xl hover:bg-green-400 transition ease-in-out"
+                              onClick={() => handleIncrementQty(item.id)}
+                            >
+                              +
+                            </button>
+                            <span className="font-semibold text-xl">{item.qty}</span>
+                            <button
+                              className="bg-green-500 px-3 pb-1 rounded-lg text-white text-2xl hover:bg-green-400 transition ease-in-out"
+                              onClick={() => handleDecrementQty(item.id)}
+                            >
+                              -
+                            </button>
+                          </td>
                           <td className="px-10 py-3">
                             {(product.price * item.qty).toLocaleString("en-US", {
                               style: "currency",
@@ -220,7 +239,7 @@ export const BuyPage = () => {
           </div>
           <div className="w-11/12 ml-4 mt-2">
             <label htmlFor="promoCode" className="text-lg font-medium">
-              Enter promo code:
+              Promo code:
             </label>
             <div className="flex gap-2">
               <input
@@ -230,6 +249,12 @@ export const BuyPage = () => {
                 className="text-lg p-2 mt-2 w-full border-2 rounded-md"
                 value={promoCode}
                 onChange={handlePromoCodeChange}
+                placeholder="Enter promo code"
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    applyPromoCode();
+                  }
+                }}
               />
               <button
                 onClick={applyPromoCode}

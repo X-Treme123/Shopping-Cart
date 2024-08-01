@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import "../Layouts/Image.css";
 
 const AuthLayouts = (props) => {
   const { title, children, type } = props;
