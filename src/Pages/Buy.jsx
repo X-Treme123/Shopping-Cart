@@ -2,7 +2,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { MdArrowBackIos } from "react-icons/md";
-import { useTotalDispathPrice, useTotalPrice } from "../context/TotalPriceContext";
+import {
+  useTotalDispathPrice,
+  useTotalPrice,
+} from "../context/TotalPriceContext";
 import { getProducts } from "../Services/products.service";
 import useLogin from "../hooks/useLogin";
 import Bca from "../Components/Elements/icons/Bank/Bca.jsx";
@@ -11,7 +14,11 @@ import BRI from "../Components/Elements/icons/Bank/BRI.jsx";
 import Mandiri from "../Components/Elements/icons/Bank/Mandiri.jsx";
 import Button from "../Components/Elements/Button/Button.jsx";
 import { FaShoppingCart } from "react-icons/fa";
-import { removeFromCart, incrementQuantity, decrementQuantity } from "../redux/slices/cartSlice.js";
+import {
+  removeFromCart,
+  incrementQuantity,
+  decrementQuantity,
+} from "../redux/slices/cartSlice.js";
 import "../style.css";
 
 export const BuyPage = () => {
@@ -77,7 +84,7 @@ export const BuyPage = () => {
   };
 
   const handleClick = () => {
-    window.location.href = "/products"
+    window.location.href = "/products";
   };
 
   const handleRemoveProduct = (itemId) => {
@@ -119,8 +126,12 @@ export const BuyPage = () => {
       <div className="h-4/5 w-4/5 flex justify-center border-2 rounded-lg">
         <div className="w-4/5 flex flex-col items-start">
           <div className="flex justify-between mx-4 flex-col gap-3">
-            <h1 className="text-2xl font-bold py-5 text-green-500">Shopping Cart</h1>
-            <h2 className="font-semibold text-xl font-mono border-b-2 mb-2">{totalCart} Items</h2>
+            <h1 className="text-2xl font-bold py-5 text-green-500">
+              Shopping Cart
+            </h1>
+            <h2 className="font-semibold text-xl font-mono border-b-2 mb-2">
+              {totalCart} Items
+            </h2>
           </div>
           <div className="container h-[63vh] w-full text-center overflow-y-auto">
             {totalCart > 0 ? (
@@ -147,7 +158,9 @@ export const BuyPage = () => {
                 <tbody>
                   {products.length > 0 &&
                     cart.map((item) => {
-                      const product = products.find((product) => product.id === item.id);
+                      const product = products.find(
+                        (product) => product.id === item.id
+                      );
                       return (
                         <tr key={item.id} className="border-y border-slate-300">
                           <td className="px-5 py-3">
@@ -158,33 +171,37 @@ export const BuyPage = () => {
                               className="p-1 w-40 h-40 rounded-t-lg object-contain border-2"
                             />
                           </td>
-                          <td className="px-10 py-3">{product.title.substring(0, 15)}...</td>
+                          <td className="px-10 py-3">
+                            {product.title.substring(0, 15)}...
+                          </td>
                           <td className="px-5 py-3 flex items-center justify-center mt-16 space-x-3">
                             <button
                               className="bg-green-500 px-3 pb-1 rounded-lg text-white text-2xl hover:bg-green-400 transition ease-in-out"
-                              onClick={() => handleIncrementQty(item.id)}
-                            >
+                              onClick={() => handleIncrementQty(item.id)}>
                               +
                             </button>
-                            <span className="font-semibold text-xl">{item.qty}</span>
+                            <span className="font-semibold text-xl">
+                              {item.qty}
+                            </span>
                             <button
                               className="bg-green-500 px-3 pb-1 rounded-lg text-white text-2xl hover:bg-green-400 transition ease-in-out"
-                              onClick={() => handleDecrementQty(item.id)}
-                            >
+                              onClick={() => handleDecrementQty(item.id)}>
                               -
                             </button>
                           </td>
                           <td className="px-10 py-3">
-                            {(product.price * item.qty).toLocaleString("en-US", {
-                              style: "currency",
-                              currency: "USD",
-                            })}
+                            {(product.price * item.qty).toLocaleString(
+                              "en-US",
+                              {
+                                style: "currency",
+                                currency: "USD",
+                              }
+                            )}
                           </td>
                           <td>
                             <button
                               className="bg-blue-700 px-2 py-1 text-slate-200 rounded-md hover:text-slate-200 hover:bg-blue-500 transition-colors ease-in-out"
-                              onClick={() => handleRemoveProduct(item.id)}
-                            >
+                              onClick={() => handleRemoveProduct(item.id)}>
                               Remove
                             </button>
                           </td>
@@ -196,9 +213,15 @@ export const BuyPage = () => {
             ) : (
               <div className="h-full flex flex-col items-center justify-center gap-3">
                 <FaShoppingCart className="text-4xl" />
-                <p className="text-2xl font-bold font-serif">Your shopping cart is empty</p>
-                <p className="text-lg text-gray-400 font-bold">Come on, add your favorite products here</p>
-                <Button classname="bg-green-500 text-white" onClick={handleClick}>
+                <p className="text-2xl font-bold font-serif">
+                  Your shopping cart is empty
+                </p>
+                <p className="text-lg text-gray-400 font-bold">
+                  Come on, add your favorite products here
+                </p>
+                <Button
+                  classname="bg-green-500 text-white"
+                  onClick={handleClick}>
                   Start Shopping
                 </Button>
               </div>
@@ -207,8 +230,7 @@ export const BuyPage = () => {
           <div className="flex justify-between items-center w-full">
             <Link
               to="/products"
-              className="flex items-center py-5 ml-5 text-slate-500 hover:text-slate-700 font-semibold text-lg transition-colors"
-            >
+              className="flex items-center py-5 ml-5 text-slate-500 hover:text-slate-700 font-semibold text-lg transition-colors">
               <MdArrowBackIos />
               Continue Shopping
             </Link>
@@ -216,7 +238,9 @@ export const BuyPage = () => {
         </div>
         <div className="w-2/5 flex flex-col items-start gap-3 border-2">
           <div className="flex justify-between mx-4 flex-col gap-3">
-            <p className="text-2xl font-bold text-green-500 py-5">Order Summary</p>
+            <p className="text-2xl font-bold text-green-500 py-5">
+              Order Summary
+            </p>
             <p className="text-xl font-bold font-mono">Transaction</p>
           </div>
           <div className="w-11/12 ml-4 mt-2">
@@ -228,8 +252,7 @@ export const BuyPage = () => {
               name="shippingMethod"
               className="text-lg p-2 mt-2 w-full border-2 rounded-md"
               value={selectDelivery}
-              onChange={handleDeliveryChange}
-            >
+              onChange={handleDeliveryChange}>
               <option value="free">Free Shipping - Free</option>
               <option value="standard">Standard Shipping - $2.00</option>
               <option value="express">Express Shipping - $5.00</option>
@@ -258,17 +281,103 @@ export const BuyPage = () => {
               />
               <button
                 onClick={applyPromoCode}
-                className="bg-blue-500 text-white px-4 py-2 mt-2 rounded-md hover:bg-blue-400 transition-colors"
-              >
+                className="bg-blue-500 text-white px-4 py-2 mt-2 rounded-md hover:bg-blue-400 transition-colors">
                 Apply
               </button>
             </div>
           </div>
-          <div className="flex gap-2 justify-center mx-4">
-            <Bca />
-            <BNI />
-            <BRI />
-            <Mandiri />
+          <div className="w-11/12 ml-4 mt-2">
+            <h3 className="mb-2 text-lg font-bold text-gray-900 ">Payment</h3>
+            <ul className="w-full">
+              {/* Start Input BCA */}
+              <li className="pb-2">
+                <input
+                  type="radio"
+                  id="bca"
+                  name="paymentMethod"
+                  value="bca"
+                  className="hidden peer"
+                  required
+                />
+                <label
+                  htmlFor="bca"
+                  className="inline-flex items-center justify-between w-full py-1 px-2 text-gray-500 bg-slate-200 border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-slate-300 ">
+                  <div className="flex">
+                    <Bca></Bca>
+                    <h4 className="flex items-center ml-2 text-xs">
+                      BANK CENTRAL ASIA
+                    </h4>
+                  </div>
+                </label>
+              </li>
+              {/* End Input BCA */}
+              {/* Start Input MANDIRI */}
+              <li className="pb-2">
+                <input
+                  type="radio"
+                  id="mandiri"
+                  name="paymentMethod"
+                  value="mandiri"
+                  className="hidden peer"
+                  required
+                />
+                <label
+                  htmlFor="mandiri"
+                  className="inline-flex items-center justify-between w-full py-1 px-2 text-gray-500 bg-slate-200 border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-slate-300 ">
+                  <div className="flex">
+                    <Mandiri></Mandiri>
+                    <h4 className="flex items-center ml-2 text-xs">
+                      BANK MANDIRI
+                    </h4>
+                  </div>
+                </label>
+              </li>
+              {/* End Input MANDIRI */}
+              {/* Start Input BRI */}
+              <li className="pb-2">
+                <input
+                  type="radio"
+                  id="bri"
+                  name="paymentMethod"
+                  value="bri"
+                  className="hidden peer"
+                  required
+                />
+                <label
+                  htmlFor="bri"
+                  className="inline-flex items-center justify-between w-full py-1 px-2 text-gray-500 bg-slate-200 border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-slate-300 ">
+                  <div className="flex">
+                    <BRI></BRI>
+                    <h4 className="flex items-center ml-2 text-xs">
+                      BANK RAKYAT INDONESIA
+                    </h4>
+                  </div>
+                </label>
+              </li>
+              {/* End Input BRI */}
+              {/* Start Input BNI */}
+              <li className="pb-2">
+                <input
+                  type="radio"
+                  id="bni"
+                  name="paymentMethod"
+                  value="bni"
+                  className="hidden peer"
+                  required
+                />
+                <label
+                  htmlFor="bni"
+                  className="inline-flex items-center justify-between w-full py-1 px-2 text-gray-500 bg-slate-200 border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-slate-300 ">
+                  <div className="flex">
+                    <BNI></BNI>
+                    <h4 className="flex items-center ml-2 text-xs">
+                      BANK NEGARA INDONESIA
+                    </h4>
+                  </div>
+                </label>
+              </li>
+              {/* End Input BNI */}
+            </ul>
           </div>
           <div className="w-11/12 ml-5 mt-2 flex justify-between">
             <p className="text-lg font-bold">Total price</p>
