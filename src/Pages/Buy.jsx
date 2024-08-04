@@ -18,6 +18,7 @@ import {
   removeFromCart,
   incrementQuantity,
   decrementQuantity,
+  setCartFromLocalStorage,
 } from "../redux/slices/cartSlice.js";
 import "../style.css";
 
@@ -33,6 +34,13 @@ export const BuyPage = () => {
   const [promoCode, setPromoCode] = useState("");
   const [discount, setDiscount] = useState(0);
   const username = useLogin();
+
+  useEffect(() => {
+    const localCart = JSON.parse(localStorage.getItem("cart"));
+    if (localCart) {
+      dispatch(setCartFromLocalStorage(localCart));
+    }
+  }, [dispatch]);
 
   useEffect(() => {
     getProducts((data) => {
@@ -123,8 +131,8 @@ export const BuyPage = () => {
 
   return (
     <div className="h-screen w-full flex items-center justify-center">
-      <div className="h-11/12 w-10/12 flex justify-center border-2 rounded-lg">
-        <div className="w-2/3 flex flex-col items-start">
+      <div className="h-auto w-11/12 flex justify-center border-2 rounded-lg">
+        <div className="w-3/4 flex flex-col items-start">
           <div className="flex justify-between mx-4 flex-col gap-3">
             <h1 className="text-2xl font-bold py-5 text-green-500">
               Shopping Cart
@@ -236,149 +244,137 @@ export const BuyPage = () => {
             </Link>
           </div>
         </div>
-        <div className="w-1/3 flex flex-col items-start gap-3 border-2">
+        <div className="w-2/4 flex flex-col items-start gap-3 border-2">
           <div className="flex justify-between mx-4 flex-col gap-3">
             <p className="text-2xl font-bold text-green-500 py-5">
               Order Summary
             </p>
-            <p className="text-xl font-bold font-mono">Transaction</p>
+            <p className="mb-2 text-lg font-bold text-gray-900">Transaction</p>
           </div>
-          <div className="w-11/12 ml-4 mt-2">
-            <label htmlFor="shippingMethod" className="text-lg font-medium">
-              Select delivery method:
-            </label>
-            <select
-              id="shippingMethod"
-              name="shippingMethod"
-              className="text-lg p-2 mt-2 w-full border-2 rounded-md"
-              value={selectDelivery}
-              onChange={handleDeliveryChange}>
-              <option value="free">Free Shipping - Free</option>
-              <option value="standard">Standard Shipping - $2.00</option>
-              <option value="express">Express Shipping - $5.00</option>
-              <option value="next">Next Day Delivery - $8.00</option>
-              <option value="same">Same Day Delivery - $10.00</option>
-            </select>
-          </div>
-          <div className="w-11/12 ml-4 mt-2">
-            <label htmlFor="promoCode" className="text-lg font-medium">
-              Promo code:
-            </label>
-            <div className="flex gap-2">
-              <input
-                type="text"
-                id="promoCode"
-                name="promoCode"
+          <div className="w-11/12 ml-4 mt-2 flex justify-between">
+            <div className="flex flex-col">
+              <label htmlFor="shippingMethod" className="text-lg font-medium">
+                Select delivery:
+              </label>
+              <select
+                id="shippingMethod"
+                name="shippingMethod"
                 className="text-lg p-2 mt-2 w-full border-2 rounded-md"
-                value={promoCode}
-                onChange={handlePromoCodeChange}
-                placeholder="Enter promo code"
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    applyPromoCode();
-                  }
-                }}
-              />
-              <button
-                onClick={applyPromoCode}
-                className="bg-blue-500 text-white px-4 py-2 mt-2 rounded-md hover:bg-blue-400 transition-colors">
-                Apply
-              </button>
+                value={selectDelivery}
+                onChange={handleDeliveryChange}>
+                <option value="free">Free Shipping - Free</option>
+                <option value="standard">Standard Shipping - $2.00</option>
+                <option value="express">Express Shipping - $5.00</option>
+                <option value="next">Next Day Delivery - $8.00</option>
+                <option value="same">Same Day Delivery - $10.00</option>
+              </select>
+            </div>
+            <div className="flex flex-col">
+              <label htmlFor="promoCode" className="text-lg font-medium">
+                Promo code:
+              </label>
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  id="promoCode"
+                  name="promoCode"
+                  className="text-lg p-2 mt-2 w-full border-2 rounded-md"
+                  value={promoCode}
+                  onChange={handlePromoCodeChange}
+                  placeholder="Enter promo code"
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      applyPromoCode();
+                    }
+                  }}
+                />
+                <button
+                  onClick={applyPromoCode}
+                  className="bg-blue-500 text-white px-4 py-2 mt-2 rounded-md hover:bg-blue-400 transition-colors">
+                  Apply
+                </button>
+              </div>
             </div>
           </div>
           <div className="w-11/12 ml-4 mt-2">
-            <h3 className="mb-2 text-lg font-bold text-gray-900 ">Payment</h3>
+            <h3 className="mb-2 text-lg font-bold text-gray-900">Payment</h3>
             <div className="w-full">
-              <ul className="w-full">
-                {/* Start Input BCA */}
-                <li className="pb-2">
-                  <input
-                    type="radio"
-                    id="bca"
-                    name="paymentMethod"
-                    value="bca"
-                    className="hidden peer"
-                    required
-                  />
-                  <label
-                    htmlFor="bca"
-                    className="inline-flex items-center justify-between w-full py-1 px-2 text-gray-500 bg-slate-200 border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-slate-300 ">
-                    <div className="flex">
-                      <Bca></Bca>
-                      <h4 className="flex items-center ml-2 text-xs">
-                        BANK CENTRAL ASIA
-                      </h4>
-                    </div>
-                  </label>
-                </li>
-                {/* End Input BCA */}
-                {/* Start Input MANDIRI */}
-                <li className="pb-2">
-                  <input
-                    type="radio"
-                    id="mandiri"
-                    name="paymentMethod"
-                    value="mandiri"
-                    className="hidden peer"
-                    required
-                  />
-                  <label
-                    htmlFor="mandiri"
-                    className="inline-flex items-center justify-between w-full py-1 px-2 text-gray-500 bg-slate-200 border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-slate-300 ">
-                    <div className="flex">
-                      <Mandiri></Mandiri>
-                      <h4 className="flex items-center ml-2 text-xs">
-                        BANK MANDIRI
-                      </h4>
-                    </div>
-                  </label>
-                </li>
-                {/* End Input MANDIRI */}
-                {/* Start Input BRI */}
-                <li className="pb-2">
-                  <input
-                    type="radio"
-                    id="bri"
-                    name="paymentMethod"
-                    value="bri"
-                    className="hidden peer"
-                    required
-                  />
-                  <label
-                    htmlFor="bri"
-                    className="inline-flex items-center justify-between w-full py-1 px-2 text-gray-500 bg-slate-200 border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-slate-300 ">
-                    <div className="flex">
-                      <BRI></BRI>
-                      <h4 className="flex items-center ml-2 text-xs">
-                        BANK RAKYAT INDONESIA
-                      </h4>
-                    </div>
-                  </label>
-                </li>
-                {/* End Input BRI */}
-                {/* Start Input BNI */}
-                <li className="pb-2">
-                  <input
-                    type="radio"
-                    id="bni"
-                    name="paymentMethod"
-                    value="bni"
-                    className="hidden peer"
-                    required
-                  />
-                  <label
-                    htmlFor="bni"
-                    className="inline-flex items-center justify-between w-full py-1 px-2 text-gray-500 bg-slate-200 border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-slate-300 ">
-                    <div className="flex">
-                      <BNI></BNI>
-                      <h4 className="flex items-center ml-2 text-xs">
-                        BANK NEGARA INDONESIA
-                      </h4>
-                    </div>
-                  </label>
-                </li>
-                {/* End Input BNI */}
-              </ul>
+              <div className="flex justify-between gap-5 pb-5">
+                <input
+                  type="radio"
+                  id="bca"
+                  name="paymentMethod"
+                  value="bca"
+                  className="hidden peer"
+                  required
+                />
+                <label
+                  htmlFor="bca"
+                  className="inline-flex items-center justify-between w-full py-1 px-2 text-gray-500 bg-slate-200 border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-slate-300 ">
+                  <div className="flex">
+                    <Bca></Bca>
+                    <h4 className="flex items-center ml-2 text-xs">
+                      BANK CENTRAL ASIA
+                    </h4>
+                  </div>
+                </label>
+                <input
+                  type="radio"
+                  id="mandiri"
+                  name="paymentMethod"
+                  value="mandiri"
+                  className="hidden peer"
+                  required
+                />
+                <label
+                  htmlFor="mandiri"
+                  className="inline-flex items-center justify-between w-full py-1 px-2 text-gray-500 bg-slate-200 border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-slate-300 ">
+                  <div className="flex">
+                    <Mandiri></Mandiri>
+                    <h4 className="flex items-center ml-2 text-xs">
+                      BANK MANDIRI
+                    </h4>
+                  </div>
+                </label>
+              </div>
+              <div className="flex justify-between gap-5">
+                <input
+                  type="radio"
+                  id="bri"
+                  name="paymentMethod"
+                  value="bri"
+                  className="hidden peer"
+                  required
+                />
+                <label
+                  htmlFor="bri"
+                  className="inline-flex items-center justify-between w-full py-1 px-2 text-gray-500 bg-slate-200 border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-slate-300 ">
+                  <div className="flex">
+                    <BRI></BRI>
+                    <h4 className="flex items-center ml-2 text-xs">
+                      BANK RAKYAT INDONESIA
+                    </h4>
+                  </div>
+                </label>
+                <input
+                  type="radio"
+                  id="bni"
+                  name="paymentMethod"
+                  value="bni"
+                  className="hidden peer"
+                  required
+                />
+                <label
+                  htmlFor="bni"
+                  className="inline-flex items-center justify-between w-full py-1 px-2 text-gray-500 bg-slate-200 border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-slate-300 ">
+                  <div className="flex">
+                    <BNI></BNI>
+                    <h4 className="flex items-center ml-2 text-xs">
+                      BANK NEGARA INDONESIA
+                    </h4>
+                  </div>
+                </label>
+              </div>
             </div>
           </div>
           <div className="w-11/12 ml-5 mt-2 flex justify-between">
@@ -390,10 +386,8 @@ export const BuyPage = () => {
               })}
             </p>
           </div>
-          <div className="flex gap-2 justify-center w-full px-4">
-            <Button classname="bg-green-500 text-white w-full">
-              Confirm Payment
-            </Button>
+          <div className="w-11/12 ml-5 mt-2 flex justify-between">
+              <Button classname="w-full bg-green-500 text-lg text-white">Confirm Payment</Button>
           </div>
         </div>
       </div>
