@@ -146,10 +146,10 @@ export const BuyPage = () => {
               <table className="w-full border-collapse border-b items-left font-semibold scroll-snap-type: y var(--tw-scroll-snap-strictness)">
                 <thead>
                   <tr className="text-left">
-                    <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="pl-10 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                       Product Detail
                     </th>
-                    <th className="px-20 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="pl-28 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                       Name
                     </th>
                     <th className="px-20 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">

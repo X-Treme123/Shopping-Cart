@@ -19,7 +19,7 @@ const FormLogin = () => {
         window.location.href = "/products";
       } else {
         console.log(res)
-        setLoginFailed(res.request.response);
+        setLoginFailed("username or password is incorrect");
       }
     });
   };
