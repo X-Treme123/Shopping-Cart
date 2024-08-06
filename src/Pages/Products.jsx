@@ -48,7 +48,8 @@ const ProductsPages = () => {
       <div className="container overflow-y-auto">
         {/* Banner */}
         <Banner />
-        <div className="flex justify-center items-center flex-col">
+        <p className="font-bold text-2xl font-sans w-[18%] flex items-center justify-center py-2">Trending This Week</p>
+        <div className="flex justify-center items-center flex-col py-2">
           <div className="flex flex-wrap \">
             <div className="w-full h-auto flex flex-wrap justify-center mx-4">
               {/* products */}
