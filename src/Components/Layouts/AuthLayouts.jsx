@@ -9,8 +9,8 @@ const AuthLayouts = (props) => {
   // }
   return (
     <div
-      className="flex justify-center min-h-screen items-center">
-        <nav className="absolute top-10 font-bold text-3xl italic text-green-500 font-serif">
+      className="flex justify-center flex-col min-h-screen items-center">
+        <nav className="relative py-7 font-bold text-3xl italic text-green-500 font-serif">
           TrendMart
         </nav>
         <div className="w-full max-w-md border-4 p-8 rounded-xl">

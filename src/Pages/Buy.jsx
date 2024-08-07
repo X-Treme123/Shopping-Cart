@@ -132,7 +132,7 @@ export const BuyPage = () => {
   return (
     <div className="h-screen w-full flex items-center justify-center">
       <div className="h-auto w-11/12 flex justify-center border-2 rounded-lg">
-        <div className="w-3/4 flex flex-col items-start">
+        <div className="w-4/5 flex flex-col items-start">
           <div className="flex justify-between mx-4 flex-col gap-3">
             <h1 className="text-2xl font-bold py-5 text-green-500">
               Shopping Cart

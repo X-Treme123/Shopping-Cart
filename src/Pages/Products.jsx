@@ -48,10 +48,11 @@ const ProductsPages = () => {
       <div className="container overflow-y-auto">
         {/* Banner */}
         <Banner />
-        <p className="font-bold text-2xl font-sans w-[18%] flex items-center justify-center py-2">Trending This Week</p>
+        <p className="w-[95%] mx-4 lg:mx-0 lg:w-[18%] font-bold lg:font-bold text-xl lg:text-2xl font-sans lg:flex lg:items-center lg:justify-center">Trending This Week</p>
+        <p className="w-[95%] mx-4 lg:mx-0 lg:font-thin lg:w-[19.7%] lg:flex items-center justify-center">Tune in and shop curated experiences</p>
         <div className="flex justify-center items-center flex-col py-2">
-          <div className="flex flex-wrap \">
-            <div className="w-full h-auto flex flex-wrap justify-center mx-4">
+          <div className="w-[95%]">
+            <div className="w-full h-auto flex flex-wrap items-center mx-3 justify-start">
               {/* products */}
               {products.length > 0 &&
                 products.map((product) => (

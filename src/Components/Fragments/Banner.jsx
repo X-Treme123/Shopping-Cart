@@ -13,26 +13,26 @@ const Banner = () => {
       setCurrentIndex((prevIndex) =>
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
       );
-    }, 5000); // 3 detik
+    }, 5000);
 
-    return () => clearInterval(intervalId); // Bersihkan interval saat komponen di-unmount
+    return () => clearInterval(intervalId);
   }, [images]);
 
   const handlePrevClick = () => {
-    setCurrentIndex((prevIndex) => 
+    setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
   };
 
   const handleNextClick = () => {
-    setCurrentIndex((prevIndex) => 
+    setCurrentIndex((prevIndex) =>
       prevIndex === images.length - 1 ? 0 : prevIndex + 1
     );
   };
 
   return (
-    <div className="flex flex-col lg:flex-row justify-center items-center py-10 w-full">
-      <div className="relative w-full lg:w-[65%] h-auto flex overflow-hidden shadow-xl rounded-xl mb-5 lg:mb-0 lg:mr-5">
+    <div className="flex flex-col lg:flex-row mx-auto justify-center items-center py-5 w-full">
+      <div className="relative w-[95%] lg:w-[65%] h-auto flex overflow-hidden shadow-xl rounded-xl lg:mr-5">
         <div
           className="flex transition-transform duration-500"
           style={{ transform: `translateX(${currentIndex * -100}%)`, width: `${images.length * 100}%` }}
@@ -42,14 +42,14 @@ const Banner = () => {
               key={index}
               src={src}
               alt={`image${index + 1}`}
-              className="object-cover w-full h-full"
+              className="object-cover w-full h-full lg:bg-none"
               style={{ flex: '0 0 100%' }}
             />
           ))}
         </div>
         <button
           onClick={handlePrevClick}
-          className="absolute top-1/2 flex items-center justify-center p-5 bg-gray-800 bg-opacity-50 text-white rounded-full hover:bg-opacity-75 transition ease-in-out duration-300 focus:outline-none"
+          className="absolute top-1/2 transform -translate-y-1/4 left-0 flex items-center justify-center p-3 bg-gray-800 bg-opacity-50 text-white rounded-full hover:bg-opacity-75 transition ease-in-out duration-300 focus:outline-none"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -57,13 +57,13 @@ const Banner = () => {
         </button>
         <button
           onClick={handleNextClick}
-          className="absolute top-1/2 right-0 flex items-center justify-center p-5 bg-gray-800 bg-opacity-50 text-white rounded-full hover:bg-opacity-75 transition ease-in-out duration-300 focus:outline-none"
+          className="absolute top-1/2 right-0 transform -translate-y-1/4   flex items-center justify-center p-3 bg-gray-800 bg-opacity-50 text-white rounded-full hover:bg-opacity-75 transition ease-in-out duration-300 focus:outline-none"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         </button>
-        <div className="absolute bottom-4 right-1/2 transform -translate-x-1/2 flex space-x-2">
+        <div className="absolute bottom-2 lg:bottom-4 right-[40%] lg:right-[45%] transform -translate-x-1/2 flex space-x-2">
           {images.map((_, index) => (
             <button
               key={index}
@@ -74,7 +74,7 @@ const Banner = () => {
           ))}
         </div>
       </div>
-      <div className="w-full lg:w-[27%] h-auto flex flex-col gap-5 lg:gap-16">
+      <div className="hidden lg:flex w-full lg:w-[27%] h-auto flex-col gap-16">
         <img
           src="/images/banner5.png"
           alt="banner"
